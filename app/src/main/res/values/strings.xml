@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Bilem Online</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="mainactivity">MainActivity</string>
+    <string name="it_is_forgot_password">It is Forgot password</string>
+    <string name="it_is_onboarding">It is onboarding</string>
+    <string name="move">Move</string>
+    <string name="it_is_otp_fragment">It is OTP fragment</string>
+    <string name="it_is_sign_in">It is Sign In</string>
 </resources>
