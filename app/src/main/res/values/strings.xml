@@ -7,4 +7,11 @@
     <string name="move">Move</string>
     <string name="it_is_otp_fragment">It is OTP fragment</string>
     <string name="it_is_sign_in">It is Sign In</string>
+
+
+    <string name="on_boarding_text">Здесь будет находится описание для онбоардинга</string>
+    <string name="next">Далее</string>
+    <string name="start">Начать</string>
+
+
 </resources>

@@ -7,12 +7,13 @@
 
     <fragment
         android:id="@+id/onboardingFragment"
-        android:name="com.example.bilemonline.app.fragments.OnboardingFragment"
+        android:name="com.example.bilemonline.app.fragments.onboarding.OnboardingFragment"
         android:label="fragment_onboarding"
         tools:layout="@layout/fragment_onboarding" >
         <action
             android:id="@+id/action_onboardingFragment_to_signInFragment"
-            app:destination="@id/signInFragment" />
+            app:destination="@id/signInFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/signInFragment"
