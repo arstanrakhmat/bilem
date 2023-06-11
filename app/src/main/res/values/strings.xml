@@ -12,6 +12,23 @@
     <string name="on_boarding_text">Здесь будет находится описание для онбоардинга</string>
     <string name="next">Далее</string>
     <string name="start">Начать</string>
+    <string name="login">Логин</string>
+    <string name="name">Имя</string>
+    <string name="password">Пароль</string>
+    <string name="repeat_password">Повторите пароль</string>
+    <string name="forgot_the_password">Забыли пароль?</string>
+    <string name="sign_in">Войти</string>
+    <string name="have_no_account">еще нет аккаунта?</string>
+    <string name="register">Зарегистрироваться</string>
+    <string name="register2">Регистрация</string>
+    <string name="default_login">user@gmail.com</string>
+    <string name="your_full_name">Ваше полное имя</string>
+    <string name="email">Почта</string>
+    <string name="terms_agreement"> Я принимаю (пока не понятно)</string>
+    <string name="create_an_account"> Создать аккаунт</string>
+    <string name="or"> Или </string>
+    <string name="sing_using_google"> Войти с помощью Google </string>
+    <string name="have_an_account"> уже есть аккаунт? </string>
 
 
 </resources>

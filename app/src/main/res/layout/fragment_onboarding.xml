@@ -60,13 +60,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        app:dotsColor="@color/primary_red"
+        app:dotsColor="@color/middle_light_gray"
         app:dotsSize="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:progressMode="true"
-        app:selectedDotColor="@color/primary_red" />
+        app:selectedDotColor="@color/middle_light_gray" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
