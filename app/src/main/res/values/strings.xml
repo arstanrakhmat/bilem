@@ -17,7 +17,9 @@
     <string name="password">Пароль</string>
     <string name="repeat_password">Повторите пароль</string>
     <string name="forgot_the_password">Забыли пароль?</string>
+    <string name="forgot_password_instruction">Введите адрес эл. почты, чтобы получить код для сброса пароля</string>
     <string name="sign_in">Войти</string>
+    <string name="confirm">Подтвердить</string>
     <string name="have_no_account">еще нет аккаунта?</string>
     <string name="register">Зарегистрироваться</string>
     <string name="register2">Регистрация</string>
@@ -29,6 +31,10 @@
     <string name="or"> Или </string>
     <string name="sing_using_google"> Войти с помощью Google </string>
     <string name="have_an_account"> уже есть аккаунт? </string>
+    <string name="enter_otp"> Введите код подтверждения </string>
+    <string name="enter_otp_instruction"> Введите 6-значный код, который мы отправили на почту  </string>
+    <string name="resend_code_detail"> Отправить код повторно через 0:59  </string>
+    <string name="resend_code_again"> Отправить код еще раз  </string>
 
 
 </resources>

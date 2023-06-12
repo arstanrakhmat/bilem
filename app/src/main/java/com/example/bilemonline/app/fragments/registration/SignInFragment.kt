@@ -24,6 +24,10 @@ class SignInFragment : BaseFragment<FragmentSignInBinding>() {
         binding.btnRegister.setOnClickListener {
             findNavController().navigate(R.id.action_signInFragment_to_registrationFragment)
         }
+
+        binding.btnForgotPassword.setOnClickListener {
+            findNavController().navigate(R.id.action_signInFragment_to_forgotPasswordFragment)
+        }
     }
 
 }

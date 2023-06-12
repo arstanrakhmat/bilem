@@ -77,4 +77,7 @@ dependencies {
 
     //Dots indicator for view pager
     implementation("com.tbuonomo:dotsindicator:4.3")
+
+    //OTP
+    implementation 'io.github.chaosleung:pinview:1.4.4'
 }
