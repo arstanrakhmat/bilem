@@ -40,7 +40,14 @@
         android:id="@+id/otpCodeFragment"
         android:name="com.example.bilemonline.app.fragments.registration.OtpCodeFragment"
         android:label="fragment_otp_code"
-        tools:layout="@layout/fragment_otp_code" />
+        tools:layout="@layout/fragment_otp_code" >
+        <argument
+            android:name="parentFragment"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_otpCodeFragment_to_newPasswordFragment"
+            app:destination="@id/newPasswordFragment" />
+    </fragment>
     <fragment
         android:id="@+id/forgotPasswordFragment"
         android:name="com.example.bilemonline.app.fragments.registration.ForgotPasswordFragment"
@@ -50,4 +57,9 @@
             android:id="@+id/action_forgotPasswordFragment_to_otpCodeFragment"
             app:destination="@id/otpCodeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/newPasswordFragment"
+        android:name="com.example.bilemonline.app.fragments.registration.NewPasswordFragment"
+        android:label="fragment_new_password"
+        tools:layout="@layout/fragment_new_password" />
 </navigation>

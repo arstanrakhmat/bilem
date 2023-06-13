@@ -21,7 +21,7 @@
     <ImageView
         android:id="@+id/logo2"
         android:layout_width="match_parent"
-        android:layout_height="290dp"
+        android:layout_height="270dp"
         android:layout_marginTop="32dp"
         android:contentDescription="@string/hello_blank_fragment"
         android:src="@drawable/ic_registration_icon"
@@ -71,6 +71,19 @@
             tools:targetApi="31" />
 
         <TextView
+            android:id="@+id/tvLoginError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="1dp"
+            android:fontFamily="@font/nunito"
+            android:text="@string/empty_text_error"
+            android:textColor="#EF0000"
+            android:textFontWeight="600"
+            android:textSize="11sp"
+            tools:targetApi="31" />
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
@@ -109,6 +122,19 @@
 
 
         </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tvPasswordError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="1dp"
+            android:fontFamily="@font/nunito"
+            android:text="@string/empty_text_error"
+            android:textColor="#EF0000"
+            android:textFontWeight="600"
+            android:textSize="11sp"
+            tools:targetApi="31" />
 
         <TextView
             android:id="@+id/btnForgotPassword"

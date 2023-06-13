@@ -35,6 +35,9 @@
     <string name="enter_otp_instruction"> Введите 6-значный код, который мы отправили на почту  </string>
     <string name="resend_code_detail"> Отправить код повторно через 0:59  </string>
     <string name="resend_code_again"> Отправить код еще раз  </string>
+    <string name="password_error"> пароли не совпадают*  </string>
+    <string name="empty_text_error"> заполните поле*  </string>
+    <string name="new_password"> Новый пароль  </string>
 
 
 </resources>
