@@ -38,6 +38,7 @@
     <string name="password_error"> пароли не совпадают*  </string>
     <string name="empty_text_error"> заполните поле*  </string>
     <string name="new_password"> Новый пароль  </string>
+    <string name="invalid_email"> Не правильный формат </string>
 
 
 </resources>

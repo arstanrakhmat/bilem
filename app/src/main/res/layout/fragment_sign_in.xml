@@ -81,6 +81,7 @@
             android:textColor="#EF0000"
             android:textFontWeight="600"
             android:textSize="11sp"
+            android:visibility="gone"
             tools:targetApi="31" />
 
         <TextView
@@ -134,6 +135,7 @@
             android:textColor="#EF0000"
             android:textFontWeight="600"
             android:textSize="11sp"
+            android:visibility="gone"
             tools:targetApi="31" />
 
         <TextView
