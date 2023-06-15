@@ -1,6 +1,7 @@
 package com.example.bilemonline.app.fragments.registration
 
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,7 +26,7 @@ class OtpCodeFragment : BaseFragment<FragmentOtpCodeBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnConfirm.setOnClickListener {
+        binding.btnApply.setOnClickListener {
             if (binding.pinView.length() < 6) {
                 binding.tvOtpError.visibility = View.VISIBLE
             } else {
@@ -40,5 +41,28 @@ class OtpCodeFragment : BaseFragment<FragmentOtpCodeBinding>() {
                 }
             }
         }
+
+        binding.btnBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
+        binding.btnResendOtp.setOnClickListener {
+            startTimer()
+        }
+    }
+
+    private fun startTimer() {
+        object : CountDownTimer(60000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                binding.tvResendCode.text =
+                    "Отправить код повторно через: 00:${millisUntilFinished / 1000}"
+                binding.btnResendOtp.visibility = View.GONE
+            }
+
+            override fun onFinish() {
+                binding.tvResendCode.visibility = View.GONE
+                binding.btnResendOtp.visibility = View.VISIBLE
+            }
+        }.start()
     }
 }

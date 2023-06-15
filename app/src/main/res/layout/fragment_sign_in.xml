@@ -11,7 +11,7 @@
         android:id="@+id/logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="24dp"
         android:contentDescription="@string/hello_blank_fragment"
         android:src="@drawable/ic_logo"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,8 +21,8 @@
     <ImageView
         android:id="@+id/logo2"
         android:layout_width="match_parent"
-        android:layout_height="270dp"
-        android:layout_marginTop="32dp"
+        android:layout_height="220dp"
+        android:layout_marginTop="12dp"
         android:contentDescription="@string/hello_blank_fragment"
         android:src="@drawable/ic_registration_icon"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,7 +32,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/registration_background"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -45,11 +45,11 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="24dp"
-            android:fontFamily="@font/raleway"
-            android:text="@string/login"
-            android:textColor="@color/black"
-            android:textFontWeight="400"
-            android:textSize="12sp"
+            android:fontFamily="@font/raleway_semibold"
+            android:text="@string/your_email"
+            android:textColor="@color/grey_logo"
+            android:textFontWeight="600"
+            android:textSize="14sp"
             tools:targetApi="31" />
 
         <EditText
@@ -66,7 +66,7 @@
             android:paddingHorizontal="16dp"
             android:paddingVertical="14dp"
             android:textColor="@color/black"
-            android:textFontWeight="400"
+            android:textFontWeight="500"
             android:textSize="14sp"
             tools:targetApi="31" />
 
@@ -89,11 +89,11 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="12dp"
-            android:fontFamily="@font/raleway"
+            android:fontFamily="@font/raleway_semibold"
             android:text="@string/password"
-            android:textColor="@color/black"
-            android:textFontWeight="400"
-            android:textSize="12sp"
+            android:textColor="@color/grey_logo"
+            android:textFontWeight="600"
+            android:textSize="14sp"
             tools:targetApi="31" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -118,7 +118,7 @@
                 android:paddingHorizontal="16dp"
                 android:paddingVertical="12dp"
                 android:textColor="@color/black"
-                android:textFontWeight="400"
+                android:textFontWeight="500"
                 android:textSize="14sp"
                 tools:targetApi="31" />
 
@@ -148,23 +148,90 @@
             android:background="?attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
-            android:fontFamily="@font/raleway"
+            android:fontFamily="@font/raleway_semibold"
             android:text="@string/forgot_the_password"
-            android:textColor="@color/black"
+            android:textColor="@color/grey_logo"
             android:textFontWeight="600"
-            android:textSize="12sp"
+            android:textSize="14sp"
             tools:targetApi="31" />
 
         <Button
             android:id="@+id/btnSignIn"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginHorizontal="16dp"
+            android:layout_marginHorizontal="24dp"
             android:layout_marginTop="16dp"
+            android:fontFamily="@font/raleway_semibold"
+            android:textFontWeight="600"
+            android:textSize="16sp"
+            tools:targetApi="31"
+            android:textAllCaps="false"
             android:background="@drawable/on_boarding_button_background"
             android:text="@string/sign_in"
             android:textColor="@color/white" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="150dp"
+                android:layout_height="2dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/gray" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:fontFamily="@font/raleway"
+                android:text="@string/or"
+                android:textColor="@color/black"
+                android:textFontWeight="400"
+                android:textSize="14sp"
+                tools:targetApi="31" />
+
+            <View
+                android:layout_width="150dp"
+                android:layout_height="2dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/gray" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btnGoogle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/google_button_background"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingVertical="12dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="7dp"
+                android:contentDescription="@string/hello_blank_fragment"
+                android:src="@drawable/ic_gmail" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/raleway_semibold"
+                android:text="@string/sing_using_google"
+                android:textColor="@color/grey_primary"
+                android:textFontWeight="600"
+                android:textSize="14sp"
+                tools:targetApi="31" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -180,8 +247,8 @@
                 android:fontFamily="@font/raleway"
                 android:text="@string/have_no_account"
                 android:textColor="@color/black"
-                android:textFontWeight="400"
-                android:textSize="12sp"
+                android:textFontWeight="700"
+                android:textSize="14sp"
                 tools:targetApi="31" />
 
             <TextView
@@ -194,8 +261,8 @@
                 android:fontFamily="@font/raleway"
                 android:text="@string/register"
                 android:textColor="@color/primary_red"
-                android:textFontWeight="600"
-                android:textSize="12sp"
+                android:textFontWeight="700"
+                android:textSize="14sp"
                 tools:targetApi="31" />
 
         </LinearLayout>

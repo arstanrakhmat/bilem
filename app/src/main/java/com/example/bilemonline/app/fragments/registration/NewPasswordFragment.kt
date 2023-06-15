@@ -39,10 +39,14 @@ class NewPasswordFragment : BaseFragment<FragmentNewPasswordBinding>() {
     }
 
     private fun clickListener() {
-        binding.btnSignIn.setOnClickListener {
+        binding.btnApply.setOnClickListener {
             if (checkEditTexts()) {
                 findNavController().navigate(R.id.action_newPasswordFragment_to_signInFragment)
             }
+        }
+
+        binding.btnBack.setOnClickListener {
+            findNavController().navigateUp()
         }
     }
 

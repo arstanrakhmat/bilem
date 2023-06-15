@@ -18,11 +18,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="40dp"
-            android:fontFamily="@font/raleway_semibold"
-            android:text="@string/register2"
-            android:textColor="@color/primary_red"
-            android:textFontWeight="600"
-            android:textSize="20sp"
+            android:fontFamily="@font/raleway_bold"
+            android:text="@string/welcome"
+            android:textColor="@color/black"
+            android:textFontWeight="700"
+            android:textSize="24sp"
             tools:targetApi="31" />
 
         <TextView
@@ -30,11 +30,11 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="40dp"
-            android:fontFamily="@font/raleway"
-            android:text="@string/name"
-            android:textColor="@color/black"
-            android:textFontWeight="400"
-            android:textSize="12sp"
+            android:fontFamily="@font/raleway_semibold"
+            android:text="@string/your_name"
+            android:textColor="@color/grey_logo"
+            android:textFontWeight="600"
+            android:textSize="14sp"
             tools:targetApi="31" />
 
         <EditText
@@ -51,7 +51,7 @@
             android:paddingHorizontal="16dp"
             android:paddingVertical="14dp"
             android:textColor="@color/black"
-            android:textFontWeight="400"
+            android:textFontWeight="500"
             android:textSize="14sp"
             tools:targetApi="31" />
 
@@ -74,11 +74,11 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="12dp"
-            android:fontFamily="@font/raleway"
-            android:text="@string/email"
-            android:textColor="@color/black"
-            android:textFontWeight="400"
-            android:textSize="12sp"
+            android:fontFamily="@font/raleway_semibold"
+            android:text="@string/your_email"
+            android:textColor="@color/grey_logo"
+            android:textFontWeight="600"
+            android:textSize="14sp"
             tools:targetApi="31" />
 
         <EditText
@@ -95,7 +95,7 @@
             android:paddingHorizontal="16dp"
             android:paddingVertical="14dp"
             android:textColor="@color/black"
-            android:textFontWeight="400"
+            android:textFontWeight="500"
             android:textSize="14sp"
             tools:targetApi="31" />
 
@@ -118,11 +118,11 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="12dp"
-            android:fontFamily="@font/raleway"
+            android:fontFamily="@font/raleway_semibold"
             android:text="@string/password"
-            android:textColor="@color/black"
-            android:textFontWeight="400"
-            android:textSize="12sp"
+            android:textColor="@color/grey_logo"
+            android:textFontWeight="600"
+            android:textSize="14sp"
             tools:targetApi="31" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -147,7 +147,7 @@
                 android:paddingHorizontal="16dp"
                 android:paddingVertical="12dp"
                 android:textColor="@color/black"
-                android:textFontWeight="400"
+                android:textFontWeight="500"
                 android:textSize="14sp"
                 tools:targetApi="31" />
 
@@ -172,11 +172,11 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="12dp"
-            android:fontFamily="@font/raleway"
+            android:fontFamily="@font/raleway_semibold"
             android:text="@string/repeat_password"
-            android:textColor="@color/black"
-            android:textFontWeight="400"
-            android:textSize="12sp"
+            android:textColor="@color/grey_logo"
+            android:textFontWeight="600"
+            android:textSize="14sp"
             tools:targetApi="31" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -201,7 +201,7 @@
                 android:paddingHorizontal="16dp"
                 android:paddingVertical="12dp"
                 android:textColor="@color/black"
-                android:textFontWeight="400"
+                android:textFontWeight="500"
                 android:textSize="14sp"
                 tools:targetApi="31" />
 
@@ -221,27 +221,21 @@
             android:visibility="gone"
             tools:targetApi="31" />
 
-        <CheckBox
-            android:id="@+id/checkboxAgreements"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:fontFamily="@font/raleway"
-            android:text="@string/terms_agreement"
-            android:textColor="@color/black"
-            android:textFontWeight="400"
-            tools:targetApi="31" />
+
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/bntCreateAnAccount"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginHorizontal="24dp"
             android:background="@drawable/on_boarding_button_background"
             android:backgroundTint="@color/primary_red"
             android:paddingHorizontal="16dp"
+            android:textFontWeight="600"
+            android:fontFamily="@font/raleway_semibold"
+            tools:targetApi="31"
             android:text="@string/create_an_account"
             android:textAllCaps="false"
             android:textColor="@color/white"
@@ -251,7 +245,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:orientation="horizontal">
 
             <View
@@ -284,7 +278,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:background="@drawable/google_button_background"
             android:gravity="center"
             android:orientation="horizontal"
@@ -295,14 +289,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="7dp"
                 android:contentDescription="@string/hello_blank_fragment"
-                android:src="@drawable/ic_google" />
+                android:src="@drawable/ic_gmail" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/raleway_semibold"
                 android:text="@string/sing_using_google"
-                android:textColor="#5860B7"
+                android:textColor="@color/grey_primary"
                 android:textFontWeight="600"
                 android:textSize="14sp"
                 tools:targetApi="31" />
@@ -323,8 +317,8 @@
                 android:fontFamily="@font/raleway"
                 android:text="@string/have_an_account"
                 android:textColor="@color/black"
-                android:textFontWeight="400"
-                android:textSize="12sp"
+                android:textFontWeight="700"
+                android:textSize="14sp"
                 tools:targetApi="31" />
 
             <TextView
@@ -337,8 +331,8 @@
                 android:fontFamily="@font/raleway"
                 android:text="@string/sign_in"
                 android:textColor="@color/primary_red"
-                android:textFontWeight="600"
-                android:textSize="12sp"
+                android:textFontWeight="700"
+                android:textSize="14sp"
                 tools:targetApi="31" />
 
         </LinearLayout>

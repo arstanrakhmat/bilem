@@ -40,8 +40,9 @@
 
     <Button
         android:id="@+id/bntNext"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/on_boarding_button_background"
@@ -60,6 +61,7 @@
         android:layout_marginBottom="16dp"
         app:dotsColor="@color/middle_light_gray"
         app:dotsSize="8dp"
+        app:dotsWidthFactor="5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

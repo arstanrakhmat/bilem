@@ -60,6 +60,10 @@ class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>() {
 
             }
         }
+
+        binding.btnHaveAccount.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
     private fun checkEditTexts(): Boolean {

@@ -76,6 +76,10 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding>() {
                 findNavController().navigate(R.id.action_onboardingFragment_to_signInFragment)
             }
         }
+
+        binding.btnSkip.setOnClickListener {
+            findNavController().navigate(R.id.action_onboardingFragment_to_signInFragment)
+        }
     }
 
 }

@@ -45,6 +45,10 @@ class ForgotPasswordFragment : BaseFragment<FragmentForgotPasswordBinding>() {
 
             }
         }
+
+        binding.btnBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
     private fun checkEditText(): Boolean {
