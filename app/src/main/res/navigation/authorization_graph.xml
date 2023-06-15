@@ -61,5 +61,11 @@
         android:id="@+id/newPasswordFragment"
         android:name="com.example.bilemonline.app.fragments.registration.NewPasswordFragment"
         android:label="fragment_new_password"
-        tools:layout="@layout/fragment_new_password" />
+        tools:layout="@layout/fragment_new_password" >
+        <action
+            android:id="@+id/action_newPasswordFragment_to_signInFragment"
+            app:destination="@id/signInFragment"
+            app:popUpTo="@id/signInFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

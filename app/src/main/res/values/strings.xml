@@ -37,8 +37,12 @@
     <string name="resend_code_again"> Отправить код еще раз  </string>
     <string name="password_error"> пароли не совпадают*  </string>
     <string name="empty_text_error"> заполните поле*  </string>
+    <string name="fill_out_all_fields_error"> заполните все поля  </string>
     <string name="new_password"> Новый пароль  </string>
     <string name="invalid_email"> Не правильный формат </string>
+    <string name="invalid_password"> Пароль должен состоять как минимум из 4х символов </string>
+    <string name="password_does_not_match"> Пароли не совпадают </string>
+    <string name="invalid_name"> Слишком большой </string>
 
 
 </resources>

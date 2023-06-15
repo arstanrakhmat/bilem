@@ -26,13 +26,18 @@ class OtpCodeFragment : BaseFragment<FragmentOtpCodeBinding>() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnConfirm.setOnClickListener {
-            when (args.parentFragment) {
-                1 -> findNavController().navigate(R.id.action_otpCodeFragment_to_newPasswordFragment)
-                else -> Toast.makeText(
-                    requireContext(),
-                    "get from REGISTRATION fragment",
-                    Toast.LENGTH_SHORT
-                ).show()
+            if (binding.pinView.length() < 6) {
+                binding.tvOtpError.visibility = View.VISIBLE
+            } else {
+                binding.tvOtpError.visibility = View.GONE
+                when (args.parentFragment) {
+                    1 -> findNavController().navigate(R.id.action_otpCodeFragment_to_newPasswordFragment)
+                    else -> Toast.makeText(
+                        requireContext(),
+                        "get from REGISTRATION fragment",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
         }
     }

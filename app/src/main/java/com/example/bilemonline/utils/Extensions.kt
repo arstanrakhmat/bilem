@@ -9,14 +9,11 @@ import android.widget.EditText
 import android.widget.TextView
 import com.example.bilemonline.R
 
-fun EditText.setupDynamicStrokeColorForNameAndEmail(
+fun EditText.setFilledDrawable(
     filledDrawable: Drawable,
     defaultDrawable: Drawable,
-    errorTextView: TextView,
-    isEmailValidationEnabled: Boolean = false
-): Boolean {
+) {
     val editText = this
-    var isValid = false
 
     val textWatcher = object : TextWatcher {
         override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
@@ -24,39 +21,95 @@ fun EditText.setupDynamicStrokeColorForNameAndEmail(
         override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
         override fun afterTextChanged(p0: Editable?) {
-            if (isEmailValidationEnabled) {
-                if (p0.isNullOrEmpty()) {
-                    errorTextView.visibility = View.VISIBLE
-                    errorTextView.text = resources.getText(R.string.empty_text_error)
-                    editText.background = defaultDrawable
-                } else if (!isValidEmail(p0.toString())) {
-                    editText.background = filledDrawable
-                    errorTextView.text = resources.getText(R.string.invalid_email)
-                    errorTextView.visibility = View.VISIBLE
-                } else {
-                    editText.background = filledDrawable
-                    errorTextView.visibility = View.GONE
-                    isValid = true
-                }
+            if (p0.isNullOrEmpty()) {
+                editText.background = defaultDrawable
             } else {
-                if (p0.isNullOrEmpty()) {
-                    errorTextView.visibility = View.VISIBLE
-                    editText.background = defaultDrawable
-                } else {
-                    editText.background = filledDrawable
-                    errorTextView.visibility = View.GONE
-                    isValid = true
-                }
+                editText.background = filledDrawable
             }
         }
     }
 
     editText.addTextChangedListener(textWatcher)
-
-    return isValid
 }
 
-fun isValidEmail(email: String): Boolean {
-    val pattern = Patterns.EMAIL_ADDRESS
-    return pattern.matcher(email).matches()
+fun validName(editText: EditText, textView: TextView): Boolean {
+    val name = editText.text.toString().trim()
+
+    return if (name.isEmpty()) {
+        textView.visibility = View.VISIBLE
+        textView.text = textView.context.getString(R.string.empty_text_error)
+        false
+    } else if (name.length > 20) {
+        textView.visibility = View.VISIBLE
+        textView.text = textView.context.getString(R.string.invalid_name)
+        false
+    } else {
+        textView.visibility = View.GONE
+        true
+    }
 }
+
+fun validEmail(editText: EditText, textView: TextView): Boolean {
+    val email = editText.text.toString().trim()
+
+    return if (email.isEmpty()) {
+        textView.visibility = View.VISIBLE
+        textView.text = textView.context.getString(R.string.empty_text_error)
+        false
+    } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+        textView.visibility = View.VISIBLE
+        textView.text = textView.context.getString(R.string.invalid_email)
+        false
+    } else {
+        textView.visibility = View.GONE
+        true
+    }
+}
+
+fun validPassword(editText: EditText, textView: TextView): Boolean {
+    val password = editText.text.toString().trim()
+
+    return if (password.isEmpty()) {
+        textView.visibility = View.VISIBLE
+        textView.text = textView.context.getString(R.string.empty_text_error)
+        false
+    } else if (password.length < 4) {
+        textView.visibility = View.VISIBLE
+        textView.text = textView.context.getString(R.string.invalid_password)
+        false
+    } else {
+        textView.visibility = View.GONE
+        true
+    }
+}
+
+fun validRepeatedPassword(
+    editText: EditText,
+    editText2: EditText,
+    textView: TextView,
+    textView2: TextView
+): Boolean {
+    val password = editText.text.toString().trim()
+    val password2 = editText2.text.toString().trim()
+
+    return if (password.isEmpty() && password2.isEmpty()) {
+        textView.visibility = View.VISIBLE
+        textView2.visibility = View.VISIBLE
+        textView.text = textView.context.getString(R.string.empty_text_error)
+        textView2.text = textView2.context.getString(R.string.empty_text_error)
+        false
+    } else if (password.length < 4) {
+        textView.visibility = View.VISIBLE
+        textView.text = textView.context.getString(R.string.invalid_password)
+        false
+    } else if (password != password2) {
+        textView2.visibility = View.VISIBLE
+        textView2.text = textView2.context.getString(R.string.password_does_not_match)
+        false
+    } else {
+        textView.visibility = View.GONE
+        textView2.visibility = View.GONE
+        true
+    }
+}
+
