@@ -1,5 +1,6 @@
 package com.example.bilemonline.app.fragments.registration
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import com.example.bilemonline.R
+import com.example.bilemonline.app.activity.MainActivity
 import com.example.bilemonline.app.fragments.BaseFragment
 import com.example.bilemonline.databinding.FragmentSignInBinding
 import com.example.bilemonline.utils.setFilledDrawable
@@ -47,6 +49,7 @@ class SignInFragment : BaseFragment<FragmentSignInBinding>() {
         binding.btnSignIn.setOnClickListener {
             if (checkEditTexts()) {
                 Toast.makeText(requireContext(), "Validated", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(requireContext(), MainActivity::class.java))
             }
         }
 

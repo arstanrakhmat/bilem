@@ -15,6 +15,7 @@ import com.example.bilemonline.databinding.FragmentOtpCodeBinding
 class OtpCodeFragment : BaseFragment<FragmentOtpCodeBinding>() {
 
     private val args by navArgs<OtpCodeFragmentArgs>()
+    private var timer: CountDownTimer? = null
 
     override fun inflateView(
         inflater: LayoutInflater,
@@ -32,7 +33,10 @@ class OtpCodeFragment : BaseFragment<FragmentOtpCodeBinding>() {
             } else {
                 binding.tvOtpError.visibility = View.GONE
                 when (args.parentFragment) {
-                    1 -> findNavController().navigate(R.id.action_otpCodeFragment_to_newPasswordFragment)
+                    1 -> {
+                        cancelTimer()
+                        findNavController().navigate(R.id.action_otpCodeFragment_to_newPasswordFragment)
+                    }
                     else -> Toast.makeText(
                         requireContext(),
                         "get from REGISTRATION fragment",
@@ -52,11 +56,12 @@ class OtpCodeFragment : BaseFragment<FragmentOtpCodeBinding>() {
     }
 
     private fun startTimer() {
-        object : CountDownTimer(60000, 1000) {
+        timer = object : CountDownTimer(60000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 binding.tvResendCode.text =
                     "Отправить код повторно через: 00:${millisUntilFinished / 1000}"
                 binding.btnResendOtp.visibility = View.GONE
+                binding.tvResendCode.visibility = View.VISIBLE
             }
 
             override fun onFinish() {
@@ -64,5 +69,10 @@ class OtpCodeFragment : BaseFragment<FragmentOtpCodeBinding>() {
                 binding.btnResendOtp.visibility = View.VISIBLE
             }
         }.start()
+    }
+
+    private fun cancelTimer() {
+        timer?.cancel()
+        timer = null
     }
 }

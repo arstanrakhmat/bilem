@@ -47,6 +47,10 @@
     <string name="invalid_password"> Пароль должен состоять как минимум из 4х символов </string>
     <string name="password_does_not_match"> Пароли не совпадают </string>
     <string name="invalid_name"> Слишком большой </string>
+    <string name="main_page">Главная</string>
+    <string name="my_learnings">Мои курсы</string>
+    <string name="profile">Профиль</string>
+    <string name="search">Поиск</string>
 
 
 </resources>
