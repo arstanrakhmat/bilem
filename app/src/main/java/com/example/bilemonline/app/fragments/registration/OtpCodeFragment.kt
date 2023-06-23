@@ -1,14 +1,15 @@
 package com.example.bilemonline.app.fragments.registration
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.bilemonline.R
+import com.example.bilemonline.app.activity.MainActivity
 import com.example.bilemonline.app.fragments.BaseFragment
 import com.example.bilemonline.databinding.FragmentOtpCodeBinding
 
@@ -37,11 +38,15 @@ class OtpCodeFragment : BaseFragment<FragmentOtpCodeBinding>() {
                         cancelTimer()
                         findNavController().navigate(R.id.action_otpCodeFragment_to_newPasswordFragment)
                     }
-                    else -> Toast.makeText(
-                        requireContext(),
-                        "get from REGISTRATION fragment",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    else -> {
+                        cancelTimer()
+                        startActivity(Intent(requireContext(), MainActivity::class.java))
+//                        Toast.makeText(
+//                            requireContext(),
+//                            "get from REGISTRATION fragment",
+//                            Toast.LENGTH_SHORT
+//                        ).show()
+                    }
                 }
             }
         }
