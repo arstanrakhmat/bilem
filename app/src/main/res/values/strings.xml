@@ -51,6 +51,22 @@
     <string name="my_learnings">Мои курсы</string>
     <string name="profile">Профиль</string>
     <string name="search">Поиск</string>
+    <string name="intent_to_course_constructor">Перейти на онлайн конструктор курсов</string>
+    <string name="tv_for_your_courses">Здесь появятся ваши курсы</string>
+    <string name="search_courses">Поискать курсы</string>
+    <string name="free_courses">Бесплатные курсы</string>
+    <string name="popular_categories">Популярные категории</string>
+    <string name="paid_courses">Платные курсы</string>
+    <string name="course_title">English for beginners</string>
+    <string name="course_author">Language zone</string>
+    <string name="course_rate">4.7</string>
+    <string name="course_learned">Обучились:</string>
+    <string name="course_learned_number">12</string>
+    <string name="course_price">1999</string>
+    <string name="course_price_text">сом</string>
+    <string name="category_title">UX/UI Дизайн</string>
+    <string name="category_quantity">32 курса</string>
+    <string name="categories">Популярные категории</string>
 
 
 </resources>

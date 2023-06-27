@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginBottom="4dp"
+    android:background="@drawable/course_item_background">
+
+    <ImageView
+        android:id="@+id/iv_photo"
+        android:layout_width="105dp"
+        android:layout_height="105dp"
+        android:contentDescription="@string/search_courses"
+        android:scaleType="centerCrop"
+        android:src="@drawable/image_course_item"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/raleway_bold"
+        android:text="@string/course_title"
+        android:textColor="@color/grey_logo"
+        android:textFontWeight="700"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/iv_photo"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:targetApi="31" />
+
+    <TextView
+        android:id="@+id/tv_author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/nunito_semibold"
+        android:text="@string/course_author"
+        android:textColor="@color/grey_primary"
+        android:textFontWeight="600"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@id/iv_photo"
+        app:layout_constraintTop_toBottomOf="@id/tv_title"
+        tools:targetApi="31" />
+
+    <LinearLayout
+        android:id="@+id/ll_rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toEndOf="@id/iv_photo"
+        app:layout_constraintTop_toBottomOf="@id/tv_author">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/course_author"
+            android:src="@drawable/ic_rate" />
+
+        <TextView
+            android:id="@+id/tv_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/raleway_semibold"
+            android:text="@string/course_rate"
+            android:textColor="@color/grey_primary"
+            android:textFontWeight="600"
+            android:textSize="12sp"
+            tools:targetApi="31" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:contentDescription="@string/course_rate"
+            android:src="@drawable/ic_learned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/raleway_semibold"
+            android:text="@string/course_learned"
+            android:textColor="@color/grey_primary"
+            android:textFontWeight="600"
+            android:textSize="12sp"
+            tools:targetApi="31" />
+
+        <TextView
+            android:id="@+id/tv_learned"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:fontFamily="@font/raleway_semibold"
+            android:text="@string/course_learned_number"
+            android:textColor="@color/grey_primary"
+            android:textFontWeight="600"
+            android:textSize="12sp"
+            tools:targetApi="31" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toEndOf="@id/iv_photo"
+        app:layout_constraintTop_toBottomOf="@id/ll_rate">
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito_bold"
+            android:text="@string/course_price"
+            android:textColor="@color/primary_red"
+            android:textFontWeight="700"
+            android:textSize="14sp"
+            tools:targetApi="31" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/nunito_bold"
+            android:text="@string/course_price_text"
+            android:textColor="@color/primary_red"
+            android:textFontWeight="700"
+            android:textSize="14sp"
+            tools:targetApi="31" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
