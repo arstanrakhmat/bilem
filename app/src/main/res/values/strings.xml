@@ -56,6 +56,7 @@
     <string name="search_courses">Поискать курсы</string>
     <string name="free_courses">Бесплатные курсы</string>
     <string name="popular_categories">Популярные категории</string>
+    <string name="course_categories">Категории курсов</string>
     <string name="paid_courses">Платные курсы</string>
     <string name="course_title">English for beginners</string>
     <string name="course_author">Language zone</string>
