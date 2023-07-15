@@ -68,6 +68,7 @@
     <string name="category_title">UX/UI Дизайн</string>
     <string name="category_quantity">32 курса</string>
     <string name="categories">Популярные категории</string>
+    <string name="text_for_unathoriazed">Здесь будут курсы после того, как вы зарегистрируетесь</string>
 
 
 </resources>
