@@ -55,7 +55,11 @@ class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>() {
                 Toast.makeText(requireContext(), "Validated", Toast.LENGTH_SHORT).show()
 
                 val action =
-                    RegistrationFragmentDirections.actionRegistrationFragmentToOtpCodeFragment(0)
+                    RegistrationFragmentDirections.actionRegistrationFragmentToOtpCodeFragment(
+                        0,
+                        binding.etName.text.toString(),
+                        binding.etEmail.text.toString()
+                    )
                 findNavController().navigate(action)
 
             }

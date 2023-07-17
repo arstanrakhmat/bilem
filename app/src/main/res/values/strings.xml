@@ -69,6 +69,10 @@
     <string name="category_quantity">32 курса</string>
     <string name="categories">Популярные категории</string>
     <string name="text_for_unathoriazed">Здесь будут курсы после того, как вы зарегистрируетесь</string>
+    <string name="all_courses">Все</string>
+    <string name="wish_list_courses">Хочу пройти</string>
+    <string name="favorite_courses">Любимые</string>
+    <string name="completed_courses">Пройденные</string>
 
 
 </resources>

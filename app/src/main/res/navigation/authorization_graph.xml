@@ -47,6 +47,13 @@
         <action
             android:id="@+id/action_otpCodeFragment_to_newPasswordFragment"
             app:destination="@id/newPasswordFragment" />
+        <argument
+            android:name="userName"
+            app:argType="string"
+            android:defaultValue="defaultUser" />
+        <argument
+            android:name="email"
+            android:defaultValue="defaultEmail" />
     </fragment>
     <fragment
         android:id="@+id/forgotPasswordFragment"
