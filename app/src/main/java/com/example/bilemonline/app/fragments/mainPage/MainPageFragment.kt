@@ -4,20 +4,26 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.bilemonline.R
 import com.example.bilemonline.adapter.CategoryAdapter
 import com.example.bilemonline.adapter.CourseAdapter
+import com.example.bilemonline.adapter.FreeCourseAdapter
 import com.example.bilemonline.app.fragments.BaseFragment
-import com.example.bilemonline.data.model.Category
-import com.example.bilemonline.data.model.Course
 import com.example.bilemonline.databinding.FragmentMainPageBinding
+import com.example.bilemonline.viewmodels.CategoryViewModel
+import com.example.bilemonline.viewmodels.CourseViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainPageFragment : BaseFragment<FragmentMainPageBinding>() {
 
+    private val courseViewModel by viewModel<CourseViewModel>()
+    private val categoryViewModel by viewModel<CategoryViewModel>()
+
     private lateinit var courseAdapter: CourseAdapter
     private lateinit var categoryAdapter: CategoryAdapter
+    private lateinit var freeCourseAdapter: FreeCourseAdapter
 
     override fun inflateView(
         inflater: LayoutInflater,
@@ -30,56 +36,48 @@ class MainPageFragment : BaseFragment<FragmentMainPageBinding>() {
         super.onViewCreated(view, savedInstanceState)
         setupRVForFreeCourses()
         setupRvCategories()
+        initPaidCourses()
+        initCategory()
+        courseViewModel.getListOfCoursesPaid(1, 10, "ASC", "id", false)
+        courseViewModel.getListOfCoursesFree(1, 10, "ASC", "id", true)
+        categoryViewModel.getListOfCategories(1, 10, "ASC", "id")
+    }
+
+    private fun initPaidCourses() {
+        courseViewModel.coursesPaid.observe(requireActivity()) {
+            courseAdapter.differ.submitList(it.data)
+        }
+
+        courseViewModel.coursesFree.observe(requireActivity()) {
+            freeCourseAdapter.differ.submitList(it.data)
+        }
+
+        courseViewModel.error.observe(requireActivity()) {
+            Toast.makeText(activity, "An error occurred: $it", Toast.LENGTH_LONG)
+                .show()
+        }
+    }
+
+    private fun initCategory() {
+        categoryViewModel.category.observe(requireActivity()) {
+            categoryAdapter.differ.submitList(it.data)
+        }
+
+        categoryViewModel.error.observe(requireActivity()) {
+            Toast.makeText(activity, "An error occurred: $it", Toast.LENGTH_LONG)
+                .show()
+        }
     }
 
     private fun setupRVForFreeCourses() {
-//        val snapHelper = PagerSnapHelper()
-//        snapHelper.attachToRecyclerView(binding.rvFreeCourses)
 
         binding.rvFreeCourses.layoutManager =
             GridLayoutManager(requireContext(), 2, RecyclerView.HORIZONTAL, false)
 
-        val courses = listOf(
-            Course(
-                "English for beginners",
-                "Language zone",
-                R.drawable.image_course_item,
-                3.5,
-                12,
-                1500
-            ),
-
-            Course(
-                "English for intermediates",
-                "Language zone",
-                R.drawable.image_item_couse_2,
-                4.7,
-                19,
-                1999
-            ),
-
-            Course(
-                "English for advanced",
-                "Language zone",
-                R.drawable.image_course_item,
-                4.4,
-                43,
-                1999
-            ),
-            Course(
-                "English for kids",
-                "Language zone",
-                R.drawable.image_item_couse_2,
-                5.0,
-                97,
-                1999
-            )
-        )
-
-
-        courseAdapter = CourseAdapter(courses)
+        courseAdapter = CourseAdapter()
+        freeCourseAdapter = FreeCourseAdapter()
         binding.rvFreeCourses.apply {
-            adapter = courseAdapter
+            adapter = freeCourseAdapter
         }
 
         binding.rvPaidCourses.apply {
@@ -91,16 +89,7 @@ class MainPageFragment : BaseFragment<FragmentMainPageBinding>() {
         binding.rvCategories.layoutManager =
             GridLayoutManager(requireContext(), 2, RecyclerView.HORIZONTAL, false)
 
-        val categories = listOf(
-            Category("UX/UI Дизайн", "32 курса", R.color.custom_blue),
-            Category("UX/UI Дизайн", "32 курса", R.color.custom_pink),
-            Category("UX/UI Дизайн", "32 курса", R.color.custom_purple),
-            Category("UX/UI Дизайн", "32 курса", R.color.custom_yellow),
-            Category("UX/UI Дизайн", "32 курса", R.color.custom_green),
-            Category("UX/UI Дизайн", "32 курса", R.color.custom_blue),
-        )
-
-        categoryAdapter = CategoryAdapter(categories)
+        categoryAdapter = CategoryAdapter()
         binding.rvCategories.apply {
             adapter = categoryAdapter
         }

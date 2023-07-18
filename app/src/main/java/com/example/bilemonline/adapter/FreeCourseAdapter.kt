@@ -8,12 +8,12 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.bilemonline.data.model.Data
-import com.example.bilemonline.databinding.ItemCourseBinding
+import com.example.bilemonline.databinding.ItemFreeCourseBinding
 
-class CourseAdapter :
-    RecyclerView.Adapter<CourseAdapter.ViewHolder>() {
+class FreeCourseAdapter : RecyclerView.Adapter<FreeCourseAdapter.ViewHolder>() {
 
-    private lateinit var binding: ItemCourseBinding
+    private lateinit var binding: ItemFreeCourseBinding
+
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
@@ -30,18 +30,16 @@ class CourseAdapter :
     val differ = AsyncListDiffer(this, differCallback)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        binding = ItemCourseBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-
-//        (parent.context as MainActivity).windowManager.defaultDisplay.getMetrics(displayMetrics)
-//        screenWidth = displayMetrics.widthPixels
+        binding = ItemFreeCourseBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
         return ViewHolder(binding.root)
     }
 
+    override fun getItemCount(): Int {
+        return differ.currentList.size
+    }
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
-//        val course = courses[position]
-
         val course = differ.currentList[position]
         holder.itemView.apply {
             Glide.with(this).load(course.logo.url).centerCrop().into(
@@ -51,12 +49,6 @@ class CourseAdapter :
             binding.tvAuthor.text = course.authors[0].username.toString()
             binding.tvRate.text = course.rating.toString()
 //            binding.tvLearned.text = course.people_bought.toString()
-            binding.tvPrice.text = course.price.toString()
         }
-    }
-
-    override fun getItemCount(): Int {
-//        return courses.size
-        return differ.currentList.size
     }
 }

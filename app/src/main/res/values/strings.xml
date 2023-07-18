@@ -64,6 +64,7 @@
     <string name="course_learned">Обучились:</string>
     <string name="course_learned_number">12</string>
     <string name="course_price">1999</string>
+    <string name="course_price_free">Бесплатно</string>
     <string name="course_price_text">сом</string>
     <string name="category_title">UX/UI Дизайн</string>
     <string name="category_quantity">32 курса</string>

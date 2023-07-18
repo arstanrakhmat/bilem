@@ -1,7 +1,7 @@
 package com.example.bilemonline.data.model
 
 data class UserActivateRequest(
-    val code: String,
+    val username: String,
     val email: String,
-    val username: String
+    val code: String
 )

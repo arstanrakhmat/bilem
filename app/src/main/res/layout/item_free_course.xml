@@ -2,12 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="370dp"
+    android:layout_width="360dp"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="16dp"
     android:layout_marginBottom="4dp"
     android:background="@drawable/course_item_background"
-    android:paddingEnd="15dp">
+    android:paddingEnd="25dp">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/photoContainer"
@@ -36,14 +36,15 @@
         android:layout_marginStart="12dp"
         android:layout_marginTop="4dp"
         android:ellipsize="marquee"
-
         android:fontFamily="@font/raleway_bold"
         android:marqueeRepeatLimit="marquee_forever"
         android:scrollHorizontally="true"
+        android:scrollbars="vertical"
         android:singleLine="true"
         android:text="@string/course_title"
         android:textColor="@color/grey_logo"
         android:textFontWeight="700"
+        android:textIsSelectable="true"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/photoContainer"
         app:layout_constraintTop_toTopOf="parent"
@@ -138,22 +139,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/nunito_bold"
-            android:text="@string/course_price"
+            android:text="@string/course_price_free"
             android:textColor="@color/primary_red"
             android:textFontWeight="700"
             android:textSize="14sp"
             tools:targetApi="31" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:fontFamily="@font/nunito_bold"
-            android:text="@string/course_price_text"
-            android:textColor="@color/primary_red"
-            android:textFontWeight="700"
-            android:textSize="14sp"
-            tools:targetApi="31" />
+        <!--        <TextView-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginStart="4dp"-->
+        <!--            android:fontFamily="@font/nunito_bold"-->
+        <!--            android:text="@string/course_price_text"-->
+        <!--            android:textColor="@color/primary_red"-->
+        <!--            android:textFontWeight="700"-->
+        <!--            android:textSize="14sp"-->
+        <!--            tools:targetApi="31" />-->
     </LinearLayout>
 
 

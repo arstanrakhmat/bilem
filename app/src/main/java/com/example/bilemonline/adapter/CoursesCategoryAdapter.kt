@@ -3,26 +3,30 @@ package com.example.bilemonline.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.bilemonline.data.model.DataCategory
 import com.example.bilemonline.databinding.ItemCoursesCategoryBinding
 
-class CoursesCategoryAdapter(private val courses: List<CoursesCategory>) :
+class CoursesCategoryAdapter :
     RecyclerView.Adapter<CoursesCategoryAdapter.ViewHolder>() {
 
     private lateinit var binding: ItemCoursesCategoryBinding
 //    var displayMetrics = DisplayMetrics()
 //    private var screenWidth = 0
 
-//    private val differCallback = object : DiffUtil.ItemCallback<Course>() {
-//        override fun areItemsTheSame(oldItem: Course, newItem: Course): Boolean {
-//            return oldItem.title == newItem.title
-//        }
-//
-//        override fun areContentsTheSame(oldItem: Course, newItem: Course): Boolean {
-//            return oldItem == newItem
-//        }
-//
-//    }
+    private val differCallback = object : DiffUtil.ItemCallback<DataCategory>() {
+        override fun areItemsTheSame(oldItem: DataCategory, newItem: DataCategory): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(oldItem: DataCategory, newItem: DataCategory): Boolean {
+            return oldItem == newItem
+        }
+    }
+
+    val differ = AsyncListDiffer(this, differCallback)
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
@@ -38,13 +42,13 @@ class CoursesCategoryAdapter(private val courses: List<CoursesCategory>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        val course = courses[position]
+        val course = differ.currentList[position]
         holder.itemView.apply {
-            binding.tvTitle.text = course.title
+            binding.tvTitle.text = course.name
         }
     }
 
     override fun getItemCount(): Int {
-        return courses.size
+        return differ.currentList.size
     }
 }

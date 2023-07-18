@@ -3,19 +3,28 @@ package com.example.bilemonline.app.fragments.registration
 import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.bilemonline.R
 import com.example.bilemonline.app.activity.MainActivity
 import com.example.bilemonline.app.fragments.BaseFragment
+import com.example.bilemonline.data.UserPreferences
+import com.example.bilemonline.data.model.UserActivateRequest
 import com.example.bilemonline.databinding.FragmentOtpCodeBinding
+import com.example.bilemonline.viewmodels.AuthViewModel
+import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class OtpCodeFragment : BaseFragment<FragmentOtpCodeBinding>() {
 
     private val args by navArgs<OtpCodeFragmentArgs>()
+    private val authViewModel by viewModel<AuthViewModel>()
+    private val sharedPreferences by inject<UserPreferences>()
     private var timer: CountDownTimer? = null
 
     override fun inflateView(
@@ -28,6 +37,12 @@ class OtpCodeFragment : BaseFragment<FragmentOtpCodeBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupObservers()
+        clickListeners()
+
+    }
+
+    private fun clickListeners() {
         binding.btnApply.setOnClickListener {
             if (binding.pinView.length() < 6) {
                 binding.tvOtpError.visibility = View.VISIBLE
@@ -38,14 +53,23 @@ class OtpCodeFragment : BaseFragment<FragmentOtpCodeBinding>() {
                         cancelTimer()
                         findNavController().navigate(R.id.action_otpCodeFragment_to_newPasswordFragment)
                     }
+
                     else -> {
                         cancelTimer()
-                        startActivity(Intent(requireContext(), MainActivity::class.java))
-//                        Toast.makeText(
-//                            requireContext(),
-//                            "get from REGISTRATION fragment",
-//                            Toast.LENGTH_SHORT
-//                        ).show()
+
+                        val otp = binding.pinView.text?.trim().toString()
+
+                        if (otp.length < 6) {
+                            binding.tvOtpError.visibility = View.VISIBLE
+                        } else {
+                            authViewModel.userActivate(
+                                UserActivateRequest(
+                                    args.userName,
+                                    args.email,
+                                    otp
+                                )
+                            )
+                        }
                     }
                 }
             }
@@ -57,6 +81,26 @@ class OtpCodeFragment : BaseFragment<FragmentOtpCodeBinding>() {
 
         binding.btnResendOtp.setOnClickListener {
             startTimer()
+        }
+    }
+
+    private fun setupObservers() {
+        authViewModel.activated.observe(requireActivity()) {
+            Toast.makeText(requireContext(), "Юзер Активирован", Toast.LENGTH_SHORT).show()
+            sharedPreferences.saveToken(it.accessToken)
+            sharedPreferences.saveRefreshToken(it.refreshToken)
+            startActivity(Intent(requireContext(), MainActivity::class.java))
+
+            Log.d(
+                "tokens",
+                "Token: ${sharedPreferences.fetchToken()}\n Refresh Token: ${sharedPreferences.fetchRefreshToken()}"
+            )
+        }
+
+        authViewModel.errorMessage.observe(requireActivity()) {
+            binding.tvOtpError.visibility = View.VISIBLE
+            Log.d("auth", it)
+            Toast.makeText(requireContext(), "Incorrect otp", Toast.LENGTH_SHORT).show()
         }
     }
 

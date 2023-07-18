@@ -1,6 +1,7 @@
 package com.example.bilemonline.app.fragments.registration
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,10 +10,15 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import com.example.bilemonline.R
 import com.example.bilemonline.app.fragments.BaseFragment
+import com.example.bilemonline.data.model.UserSignUpRequest
 import com.example.bilemonline.databinding.FragmentRegistrationBinding
 import com.example.bilemonline.utils.*
+import com.example.bilemonline.viewmodels.AuthViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>() {
+
+    private val authViewModel by viewModel<AuthViewModel>()
 
     override fun inflateView(
         inflater: LayoutInflater,
@@ -25,6 +31,7 @@ class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>() {
         super.onViewCreated(view, savedInstanceState)
         setFilledDrawable()
         clickListeners()
+        setupObservers()
     }
 
     private fun setFilledDrawable() {
@@ -52,21 +59,43 @@ class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>() {
     private fun clickListeners() {
         binding.bntCreateAnAccount.setOnClickListener {
             if (checkEditTexts()) {
-                Toast.makeText(requireContext(), "Validated", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(requireContext(), "Validated", Toast.LENGTH_SHORT).show()
 
-                val action =
-                    RegistrationFragmentDirections.actionRegistrationFragmentToOtpCodeFragment(
-                        0,
+                authViewModel.userSignUp(
+                    UserSignUpRequest(
                         binding.etName.text.toString(),
-                        binding.etEmail.text.toString()
+                        binding.etEmail.text.toString(),
+                        binding.etPassword.text.toString()
                     )
-                findNavController().navigate(action)
-
+                )
             }
         }
 
         binding.btnHaveAccount.setOnClickListener {
             findNavController().navigateUp()
+        }
+    }
+
+    private fun setupObservers() {
+        authViewModel.register.observe(requireActivity()) {
+            Toast.makeText(requireContext(), it.code, Toast.LENGTH_LONG).show()
+
+            val action =
+                RegistrationFragmentDirections.actionRegistrationFragmentToOtpCodeFragment(
+                    0,
+                    binding.etName.text.toString(),
+                    binding.etEmail.text.toString()
+                )
+            findNavController().navigate(action)
+        }
+
+        authViewModel.errorMessage.observe(requireActivity()) {
+            Log.d("authError", it)
+            Toast.makeText(
+                requireContext(),
+                "Пользователь с такими данными уже существует",
+                Toast.LENGTH_LONG
+            ).show()
         }
     }
 
