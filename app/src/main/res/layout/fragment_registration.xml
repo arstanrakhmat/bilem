@@ -223,7 +223,6 @@
             android:visibility="gone"
             tools:targetApi="31" />
 
-
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/bntCreateAnAccount"
             android:layout_width="match_parent"

@@ -1,9 +1,14 @@
 package com.example.bilemonline.koin
 
+import com.example.bilemonline.data.UserPreferences
 import com.example.bilemonline.data.api.BilemApi
+import com.example.bilemonline.data.repository.AuthRepository
 import com.example.bilemonline.utils.Constants
+import com.example.bilemonline.viewmodels.AuthViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.android.ext.koin.androidApplication
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -13,10 +18,12 @@ val retrofitModule = module {
     single { getOkHttp() }
     single { getRetrofitInstance(okHttpClient = get()) }
     single { getBilemApi(retrofit = get()) }
+    single { UserPreferences(androidApplication()) }
+    factory { AuthRepository(api = get()) }
 }
 
 val viewModules = module {
-    TODO()
+    viewModel { AuthViewModel(authRepository = get()) }
 }
 
 fun getOkHttp(): OkHttpClient {
