@@ -2,6 +2,7 @@ package com.example.bilemonline.app.fragments.registration
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,24 +12,18 @@ import androidx.navigation.fragment.findNavController
 import com.example.bilemonline.R
 import com.example.bilemonline.app.activity.MainActivity
 import com.example.bilemonline.app.fragments.BaseFragment
+import com.example.bilemonline.data.UserPreferences
 import com.example.bilemonline.databinding.FragmentSignInBinding
 import com.example.bilemonline.utils.setFilledDrawable
 import com.example.bilemonline.utils.validEmail
 import com.example.bilemonline.utils.validPassword
+import com.example.bilemonline.viewmodels.AuthViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SignInFragment : BaseFragment<FragmentSignInBinding>() {
 
-//    private lateinit var binding: FragmentSignInBinding
-//
-//    override fun onCreateView(
-//        inflater: LayoutInflater,
-//        container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View {
-//        binding = FragmentSignInBinding.inflate(inflater, container, false)
-//
-//        return binding.root
-//    }
+    private val authViewModel by viewModel<AuthViewModel>()
+    private lateinit var sharedPreferences: UserPreferences
 
     override fun inflateView(
         inflater: LayoutInflater,
@@ -42,6 +37,9 @@ class SignInFragment : BaseFragment<FragmentSignInBinding>() {
 
         setFilledDrawable()
         clickListener()
+        setupObservers()
+
+        sharedPreferences = UserPreferences(requireContext())
 
     }
 
@@ -60,8 +58,9 @@ class SignInFragment : BaseFragment<FragmentSignInBinding>() {
     private fun clickListener() {
         binding.btnSignIn.setOnClickListener {
             if (checkEditTexts()) {
-                Toast.makeText(requireContext(), "Validated", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(requireContext(), MainActivity::class.java))
+//                Toast.makeText(requireContext(), "Validated", Toast.LENGTH_SHORT).show()
+                authViewModel.userSignIn(binding.etLogin.text.toString(), binding.etPassword.text.toString())
+//                Log.d("LoginChekc", "Email: ${binding.etLogin.toString()}")
             }
         }
 
@@ -71,6 +70,20 @@ class SignInFragment : BaseFragment<FragmentSignInBinding>() {
 
         binding.btnForgotPassword.setOnClickListener {
             findNavController().navigate(R.id.action_signInFragment_to_forgotPasswordFragment)
+        }
+    }
+
+    private fun setupObservers() {
+        authViewModel.singIn.observe(requireActivity()) {
+            startActivity(Intent(requireContext(), MainActivity::class.java))
+            sharedPreferences.saveToken(it.accessToken)
+            sharedPreferences.saveRefreshToken(it.refreshToken)
+        }
+
+        authViewModel.errorMessage.observe(requireActivity()) {
+            Log.d("authE", it)
+            Toast.makeText(requireContext(), "Неверный логин или пароль!", Toast.LENGTH_SHORT)
+                .show()
         }
     }
 

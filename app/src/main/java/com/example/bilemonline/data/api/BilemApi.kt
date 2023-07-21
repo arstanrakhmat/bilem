@@ -2,17 +2,34 @@ package com.example.bilemonline.data.api
 
 import com.example.bilemonline.data.model.CategoryResponse
 import com.example.bilemonline.data.model.CourseResponse
+import com.example.bilemonline.data.model.LoginResponse
 import com.example.bilemonline.data.model.UserActivateRequest
 import com.example.bilemonline.data.model.UserActivateResponse
 import com.example.bilemonline.data.model.UserSignUpRequest
 import com.example.bilemonline.data.model.UserSignUpResponse
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface BilemApi {
+
+    @FormUrlEncoded
+    @POST("auth/sign-in")
+    suspend fun userSignIn(
+        @Field("email") email: String,
+        @Field("password") password: String
+    ): Response<LoginResponse>
+
+    @FormUrlEncoded
+    @POST("auth/forgot-password")
+    suspend fun userForgotPassword(
+        @Field("email") email: String
+    ): Response<String>
+
     @POST("auth/sign-up")
     suspend fun userSignUp(
         @Body user: UserSignUpRequest

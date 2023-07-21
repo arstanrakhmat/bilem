@@ -12,7 +12,6 @@
         android:layout_height="?android:attr/actionBarSize"
         android:background="@color/custom_white"
         android:gravity="center_horizontal"
-        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -30,11 +29,252 @@
 
     </androidx.appcompat.widget.Toolbar>
 
+    <ImageView
+        android:id="@+id/ivUserPhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_profile"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <TextView
+        android:id="@+id/tvUser"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:fontFamily="@font/raleway_bold"
+        android:gravity="center_horizontal"
+        android:text="@string/hello_user"
+        android:textColor="@color/primary_black"
+        android:textFontWeight="700"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@id/ivUserPhoto"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_goneMarginTop="8dp"
+        tools:targetApi="31" />
+
+    <LinearLayout
+        android:id="@+id/llls"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvUser">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llModifyAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="32dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_user_modify" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/raleway"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="@string/modify_account"
+                android:textColor="@color/primary_black"
+                android:textFontWeight="500"
+                android:textSize="16sp"
+                tools:targetApi="31" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_arrow_open" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llChangePassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="32dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_key" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/raleway"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="@string/change_password"
+                android:textColor="@color/primary_black"
+                android:textFontWeight="500"
+                android:textSize="16sp"
+                tools:targetApi="31" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_arrow_open" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llMostAskedQuestions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="32dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_often_questions" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/raleway"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="@string/frequently_asked_questions"
+                android:textColor="@color/primary_black"
+                android:textFontWeight="500"
+                android:textSize="16sp"
+                tools:targetApi="31" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_arrow_open" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llChangeLanguage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="32dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_chagne_language" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/raleway"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="@string/change_language"
+                android:textColor="@color/primary_black"
+                android:textFontWeight="500"
+                android:textSize="16sp"
+                tools:targetApi="31" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_arrow_open" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llWallet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="32dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_wallet" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/raleway"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="@string/my_wallter"
+                android:textColor="@color/primary_black"
+                android:textFontWeight="500"
+                android:textSize="16sp"
+                tools:targetApi="31" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_arrow_open" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnSignOut"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="38dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/on_boarding_button_background"
+        android:fontFamily="@font/raleway_semibold"
+        android:text="@string/sign_out"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textFontWeight="600"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:targetApi="31" />
+
     <LinearLayout
         android:id="@+id/llNoAccount"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,12 +301,12 @@
             android:layout_marginHorizontal="36dp"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/nunito"
+            android:text="@string/text_for_unathoriazed"
             android:textAlignment="center"
-            android:visibility="invisible"
             android:textColor="@color/black"
             android:textFontWeight="600"
             android:textSize="16sp"
-            android:text="@string/text_for_unathoriazed"
+            android:visibility="invisible"
             tools:targetApi="31" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -123,15 +363,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
-            android:background="@drawable/google_button_background"
             android:layout_marginTop="16dp"
+            android:background="@drawable/google_button_background"
+            android:fontFamily="@font/raleway"
             android:text="@string/sign_in"
             android:textAllCaps="false"
             android:textColor="@color/grey_primary"
-            android:textSize="16sp"
-            android:fontFamily="@font/raleway"
             android:textFontWeight="500"
-            tools:targetApi="31"/>
+            android:textSize="16sp"
+            tools:targetApi="31" />
 
     </LinearLayout>
 
