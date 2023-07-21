@@ -1,13 +1,14 @@
 package com.example.bilemonline.app.fragments.onboarding
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.bilemonline.R
+import com.example.bilemonline.app.activity.AuthorizationActivity
 import com.example.bilemonline.app.fragments.BaseFragment
 import com.example.bilemonline.databinding.FragmentOnboardingBinding
 
@@ -73,12 +74,12 @@ class OnboardingFragment : BaseFragment<FragmentOnboardingBinding>() {
             if (nextFragmentIndex < fragmentList.size) {
                 binding.viewPager.setCurrentItem(nextFragmentIndex, true)
             } else {
-                findNavController().navigate(R.id.action_onboardingFragment_to_signInFragment)
+                startActivity(Intent(requireContext(), AuthorizationActivity::class.java))
             }
         }
 
         binding.btnSkip.setOnClickListener {
-            findNavController().navigate(R.id.action_onboardingFragment_to_signInFragment)
+            startActivity(Intent(requireContext(), AuthorizationActivity::class.java))
         }
     }
 
