@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.bilemonline.R
 import com.example.bilemonline.app.activity.MainActivity
 import com.example.bilemonline.app.fragments.BaseFragment
 import com.example.bilemonline.data.UserPreferences
@@ -51,7 +50,12 @@ class OtpCodeFragment : BaseFragment<FragmentOtpCodeBinding>() {
                 when (args.parentFragment) {
                     1 -> {
                         cancelTimer()
-                        findNavController().navigate(R.id.action_otpCodeFragment_to_newPasswordFragment)
+                        val otp = binding.pinView.text?.trim().toString()
+                        if (otp.length < 6) {
+                            binding.tvOtpError.visibility = View.VISIBLE
+                        } else {
+                            authViewModel.userVerifyPassword(args.email, otp)
+                        }
                     }
 
                     else -> {
@@ -86,7 +90,7 @@ class OtpCodeFragment : BaseFragment<FragmentOtpCodeBinding>() {
 
     private fun setupObservers() {
         authViewModel.activated.observe(requireActivity()) {
-            Toast.makeText(requireContext(), "Юзер Активирован", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(requireContext(), "Юзер Активирован", Toast.LENGTH_SHORT).show()
             sharedPreferences.saveToken(it.accessToken)
             sharedPreferences.saveRefreshToken(it.refreshToken)
             startActivity(Intent(requireContext(), MainActivity::class.java))
@@ -97,10 +101,16 @@ class OtpCodeFragment : BaseFragment<FragmentOtpCodeBinding>() {
             )
         }
 
+        authViewModel.verified.observe(requireActivity()) {
+            val action =
+                OtpCodeFragmentDirections.actionOtpCodeFragmentToNewPasswordFragment(email = args.email)
+            findNavController().navigate(action)
+        }
+
         authViewModel.errorMessage.observe(requireActivity()) {
             binding.tvOtpError.visibility = View.VISIBLE
             Log.d("auth", it)
-            Toast.makeText(requireContext(), "Incorrect otp", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Неверный код", Toast.LENGTH_SHORT).show()
         }
     }
 

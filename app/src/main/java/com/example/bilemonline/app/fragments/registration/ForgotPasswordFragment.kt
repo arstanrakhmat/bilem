@@ -1,9 +1,11 @@
 package com.example.bilemonline.app.fragments.registration
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import com.example.bilemonline.R
@@ -11,9 +13,12 @@ import com.example.bilemonline.app.fragments.BaseFragment
 import com.example.bilemonline.databinding.FragmentForgotPasswordBinding
 import com.example.bilemonline.utils.setFilledDrawable
 import com.example.bilemonline.utils.validEmail
+import com.example.bilemonline.viewmodels.AuthViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ForgotPasswordFragment : BaseFragment<FragmentForgotPasswordBinding>() {
 
+    private val authViewModel by viewModel<AuthViewModel>()
     override fun inflateView(
         inflater: LayoutInflater,
         container: ViewGroup?
@@ -25,6 +30,7 @@ class ForgotPasswordFragment : BaseFragment<FragmentForgotPasswordBinding>() {
         super.onViewCreated(view, savedInstanceState)
         setFilledDrawable()
         clickListeners()
+        setupObservers()
     }
 
     private fun setFilledDrawable() {
@@ -37,17 +43,27 @@ class ForgotPasswordFragment : BaseFragment<FragmentForgotPasswordBinding>() {
     private fun clickListeners() {
         binding.btnApply.setOnClickListener {
             if (checkEditText()) {
-                val action =
-                    ForgotPasswordFragmentDirections.actionForgotPasswordFragmentToOtpCodeFragment(
-                        1
-                    )
-                findNavController().navigate(action)
-
+                authViewModel.userForgotPassword(binding.etNewEmail.text.toString())
             }
         }
 
         binding.btnBack.setOnClickListener {
             findNavController().navigateUp()
+        }
+    }
+
+    private fun setupObservers() {
+        authViewModel.resetPassword.observe(requireActivity()) {
+            val action =
+                ForgotPasswordFragmentDirections.actionForgotPasswordFragmentToOtpCodeFragment(
+                    parentFragment = 1, email = binding.etNewEmail.text.toString()
+                )
+            findNavController().navigate(action)
+        }
+
+        authViewModel.errorMessage.observe(requireActivity()) {
+            Log.d("auth", it)
+            Toast.makeText(requireContext(), "Something went wrong...", Toast.LENGTH_SHORT).show()
         }
     }
 

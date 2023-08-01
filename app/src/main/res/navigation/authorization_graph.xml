@@ -64,5 +64,9 @@
             app:destination="@id/signInFragment"
             app:popUpTo="@id/signInFragment"
             app:popUpToInclusive="true" />
+        <argument
+            android:name="email"
+            app:argType="string"
+            android:defaultValue="newEmail" />
     </fragment>
 </navigation>

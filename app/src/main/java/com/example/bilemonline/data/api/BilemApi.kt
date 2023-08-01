@@ -1,6 +1,7 @@
 package com.example.bilemonline.data.api
 
 import com.example.bilemonline.data.model.CategoryResponse
+import com.example.bilemonline.data.model.ChangePasswordResponse
 import com.example.bilemonline.data.model.CourseResponse
 import com.example.bilemonline.data.model.LoginResponse
 import com.example.bilemonline.data.model.UserActivateRequest
@@ -13,6 +14,7 @@ import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface BilemApi {
@@ -28,7 +30,27 @@ interface BilemApi {
     @POST("auth/forgot-password")
     suspend fun userForgotPassword(
         @Field("email") email: String
-    ): Response<String>
+    ): Response<Unit>
+
+    @FormUrlEncoded
+    @POST("auth/verify-password")
+    suspend fun userVerifyPassword(
+        @Field("email") email: String,
+        @Field("code") code: String
+    ): Response<Unit>
+
+    @FormUrlEncoded
+    @POST("auth/change-password/{email}")
+    suspend fun userChangePassword(
+        @Path("email")
+        email: String,
+
+        @Field("password")
+        password: String,
+
+        @Field("confirmPassword")
+        confirmPassword: String
+    ): Response<ChangePasswordResponse>
 
     @POST("auth/sign-up")
     suspend fun userSignUp(

@@ -78,7 +78,7 @@ class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>() {
 
     private fun setupObservers() {
         authViewModel.register.observe(requireActivity()) {
-            Toast.makeText(requireContext(), it.code, Toast.LENGTH_LONG).show()
+//            Toast.makeText(requireContext(), it.code, Toast.LENGTH_LONG).show()
 
             val action =
                 RegistrationFragmentDirections.actionRegistrationFragmentToOtpCodeFragment(

@@ -61,8 +61,8 @@
         android:cursorVisible="true"
         android:inputType="number"
         android:itemBackground="@color/gray"
-        app:itemCount="6"
         android:textColor="@color/black"
+        app:itemCount="6"
         app:itemHeight="65dp"
         app:itemRadius="4dp"
         app:itemSpacing="10dp"
@@ -86,22 +86,47 @@
 
         tools:targetApi="31" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnResendOtp"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="46dp"
-        android:background="@drawable/google_button_background"
-        android:fontFamily="@font/raleway_semibold"
-        android:paddingHorizontal="16dp"
-        android:text="@string/resend_code_again"
-        android:textAllCaps="false"
-        android:textColor="@color/grey_primary"
-        android:textFontWeight="600"
-        android:textSize="16sp"
-        tools:targetApi="31" />
+        android:layout_marginTop="46dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnResendOtp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/google_button_background"
+            android:fontFamily="@font/raleway_semibold"
+            android:paddingHorizontal="16dp"
+            android:text="@string/resend_code_again"
+            android:textAllCaps="false"
+            android:textColor="@color/grey_primary"
+            android:textFontWeight="600"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:targetApi="31" />
+
+        <TextView
+            android:id="@+id/tvResendCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway_semibold"
+            android:gravity="center"
+            android:text="@string/resend_code_detail"
+            android:textColor="@color/grey_logo"
+            android:textFontWeight="600"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:targetApi="31" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnApply"
@@ -120,21 +145,5 @@
         android:textFontWeight="600"
         android:textSize="16sp"
         tools:targetApi="31" />
-
-    <TextView
-        android:id="@+id/tvResendCode"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="46dp"
-        android:layout_marginTop="48dp"
-        android:fontFamily="@font/raleway_semibold"
-        android:gravity="center"
-        android:text="@string/resend_code_detail"
-        android:textColor="@color/grey_logo"
-        android:textFontWeight="600"
-        android:textSize="16sp"
-        android:visibility="gone"
-        tools:targetApi="31" />
-
 
 </LinearLayout>
