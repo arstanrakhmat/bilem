@@ -84,4 +84,7 @@ dependencies {
 
     //FlexBox for RV in search
     implementation 'com.google.android.flexbox:flexbox:3.0.0'
+
+    //Google auth
+    implementation 'com.google.android.gms:play-services-auth:20.6.0'
 }

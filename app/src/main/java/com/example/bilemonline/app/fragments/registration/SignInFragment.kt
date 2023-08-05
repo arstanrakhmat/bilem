@@ -18,18 +18,36 @@ import com.example.bilemonline.utils.setFilledDrawable
 import com.example.bilemonline.utils.validEmail
 import com.example.bilemonline.utils.validPassword
 import com.example.bilemonline.viewmodels.AuthViewModel
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SignInFragment : BaseFragment<FragmentSignInBinding>() {
 
     private val authViewModel by viewModel<AuthViewModel>()
     private lateinit var sharedPreferences: UserPreferences
+    private lateinit var googleSignInClient: GoogleSignInClient
+
+    private val RC_SIGN_IN = 123
 
     override fun inflateView(
         inflater: LayoutInflater,
         container: ViewGroup?
     ): FragmentSignInBinding {
         return FragmentSignInBinding.inflate(inflater, container, false)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestEmail()
+            .build()
+
+        googleSignInClient = GoogleSignIn.getClient(requireContext(), gso)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -59,7 +77,10 @@ class SignInFragment : BaseFragment<FragmentSignInBinding>() {
         binding.btnSignIn.setOnClickListener {
             if (checkEditTexts()) {
 //                Toast.makeText(requireContext(), "Validated", Toast.LENGTH_SHORT).show()
-                authViewModel.userSignIn(binding.etLogin.text.toString(), binding.etPassword.text.toString())
+                authViewModel.userSignIn(
+                    binding.etLogin.text.toString(),
+                    binding.etPassword.text.toString()
+                )
 //                Log.d("LoginChekc", "Email: ${binding.etLogin.toString()}")
             }
         }
@@ -71,7 +92,84 @@ class SignInFragment : BaseFragment<FragmentSignInBinding>() {
         binding.btnForgotPassword.setOnClickListener {
             findNavController().navigate(R.id.action_signInFragment_to_forgotPasswordFragment)
         }
+
+        binding.btnGoogle.setOnClickListener {
+//            signInGoogle()
+            startGoogleSignIn()
+        }
     }
+
+    private fun startGoogleSignIn() {
+        val signInIntent = googleSignInClient.signInIntent
+        startActivityForResult(signInIntent, RC_SIGN_IN)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == RC_SIGN_IN) {
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            try {
+                // Sign-in was successful, now you can access the account information
+                val account = task.getResult(ApiException::class.java)
+                handleSignedInAccount(account)
+            } catch (e: ApiException) {
+                // Sign-in failed, handle the error
+                // You can show a message or take appropriate action
+            }
+        }
+    }
+
+    private fun handleSignedInAccount(account: GoogleSignInAccount?) {
+        if (account != null) {
+            Log.d(
+                "GoogleAuth",
+                "Account Info: Email is ${account.email}\n, Photo is ${account.photoUrl}\n Name is ${account.displayName}"
+            )
+            Toast.makeText(requireContext(), "Successfully authenticated", Toast.LENGTH_SHORT)
+                .show()
+            // TODO: Do something with the user's information
+        }
+    }
+
+//    private fun signInGoogle() {
+//        val signInIntent = googleSignInClient.signInIntent
+//        launcher.launch(signInIntent)
+//    }
+
+//    private val launcher =
+//        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+//            if (result.resultCode == Activity.RESULT_OK) {
+//                val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
+//                handleResults(task)
+//            } else {
+//                Toast.makeText(requireContext(), "Could not do anything else", Toast.LENGTH_SHORT).show()
+//            }
+//        }
+
+//    private fun handleResults(task: Task<GoogleSignInAccount>) {
+//        if (task.isSuccessful) {
+//            val account: GoogleSignInAccount? = task.result
+//            if (account != null) {
+//                updateUI(account)
+//            }
+//        } else {
+//            Toast.makeText(requireContext(), task.exception.toString(), Toast.LENGTH_SHORT).show()
+//        }
+//    }
+
+//    private fun updateUI(account: GoogleSignInAccount) {
+//        Log.d("GoogleAuth", "Token: ${account.idToken}")
+//
+//        val accInfo = GoogleSignIn.getLastSignedInAccount(requireContext())
+//        if (accInfo != null) {
+//            Log.d(
+//                "GoogleAuth",
+//                "Account Info: Email is ${accInfo.email}\n, Photo is ${accInfo.photoUrl}\n Name is ${accInfo.displayName}"
+//            )
+//        }
+//
+//        Toast.makeText(requireContext(), "Successfully authenticated", Toast.LENGTH_SHORT).show()
+//    }
 
     private fun setupObservers() {
         authViewModel.singIn.observe(requireActivity()) {
