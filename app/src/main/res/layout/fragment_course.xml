@@ -7,6 +7,7 @@
     tools:context=".app.fragments.course.CourseFragment">
 
     <LinearLayout
+        android:id="@+id/llHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/middle_light_gray"
@@ -74,9 +75,9 @@
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
                 android:layout_weight="1"
-                android:drawablePadding="8dp"
+                android:drawablePadding="4dp"
                 android:layout_gravity="center_vertical"
-                android:text="Обучились: 12"
+                android:text="@string/studied_count"
                 android:textColor="@color/white"
                 android:fontFamily="@font/raleway"
                 app:drawableStartCompat="@drawable/ic_learned" />
@@ -85,11 +86,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
-                android:drawablePadding="8dp"
+                android:drawablePadding="4dp"
                 android:layout_weight="1"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart  ="8dp"
                 android:layout_gravity="center_vertical"
-                android:text="0/20 пройдено"
+                android:text="@string/completed_count"
                 android:textColor="@color/white"
                 android:fontFamily="@font/raleway"
                 app:drawableStartCompat="@drawable/ic_completed" />
@@ -97,5 +98,27 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayoutCourse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabIndicator="@null"
+        app:layout_constraintStart_toStartOf="parent"
+        app:tabBackground="@drawable/course_info_tab_color_selector"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/llHeader"
+        app:tabTextAppearance="@style/LearningsTabFont"
+        />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPagerCourse"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tabLayoutCourse"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
