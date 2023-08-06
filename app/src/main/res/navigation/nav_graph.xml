@@ -8,7 +8,11 @@
         android:id="@+id/mainPageFragment"
         android:name="com.example.bilemonline.app.fragments.mainPage.MainPageFragment"
         android:label="fragment_main_page"
-        tools:layout="@layout/fragment_main_page" />
+        tools:layout="@layout/fragment_main_page" >
+        <action
+            android:id="@+id/action_mainPageFragment_to_courseFragment"
+            app:destination="@id/courseFragment" />
+    </fragment>
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.example.bilemonline.app.fragments.searchPage.SearchFragment"
@@ -24,4 +28,9 @@
         android:name="com.example.bilemonline.app.fragments.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/courseFragment"
+        android:name="com.example.bilemonline.app.fragments.course.CourseFragment"
+        android:label="fragment_course"
+        tools:layout="@layout/fragment_course" />
 </navigation>

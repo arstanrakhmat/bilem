@@ -43,6 +43,14 @@ class MainPageFragment : BaseFragment<FragmentMainPageBinding>() {
         courseViewModel.getListOfCoursesPaid(1, 10, "ASC", "id", false)
         courseViewModel.getListOfCoursesFree(1, 10, "ASC", "id", true)
         categoryViewModel.getListOfCategories(1, 10, "ASC", "id")
+
+        courseAdapter.setOnClickListener {
+            findNavController().navigate(R.id.action_mainPageFragment_to_courseFragment)
+        }
+
+        freeCourseAdapter.setOnClickListener {
+            findNavController().navigate(R.id.action_mainPageFragment_to_courseFragment)
+        }
     }
 
     private fun initPaidCourses() {

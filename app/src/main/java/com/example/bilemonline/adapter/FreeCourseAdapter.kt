@@ -49,6 +49,15 @@ class FreeCourseAdapter : RecyclerView.Adapter<FreeCourseAdapter.ViewHolder>() {
             binding.tvAuthor.text = course.authors[0].username.toString()
             binding.tvRate.text = course.rating.toString()
 //            binding.tvLearned.text = course.people_bought.toString()
+            setOnClickListener {
+                onItemClickListener?.let { it(course) }
+            }
         }
+    }
+
+    private var onItemClickListener: ((Data) -> Unit)? = null
+
+    fun setOnClickListener(listener: (Data) -> Unit) {
+        onItemClickListener = listener
     }
 }

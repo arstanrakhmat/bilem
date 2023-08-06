@@ -52,11 +52,20 @@ class CourseAdapter :
             binding.tvRate.text = course.rating.toString()
 //            binding.tvLearned.text = course.people_bought.toString()
             binding.tvPrice.text = course.price.toString()
+            setOnClickListener {
+                onItemClickListener?.let { it(course) }
+            }
         }
     }
 
     override fun getItemCount(): Int {
 //        return courses.size
         return differ.currentList.size
+    }
+
+    private var onItemClickListener: ((Data) -> Unit)? = null
+
+    fun setOnClickListener(listener: (Data) -> Unit) {
+        onItemClickListener = listener
     }
 }
