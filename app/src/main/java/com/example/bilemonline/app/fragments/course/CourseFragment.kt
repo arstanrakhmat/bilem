@@ -21,6 +21,10 @@ class CourseFragment : BaseFragment<FragmentCourseBinding>() {
 
     private val args: CourseFragmentArgs by navArgs()
     private val courseViewModel by viewModel<CourseViewModel>()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setupObservers()
+    }
 
     override fun inflateView(
         inflater: LayoutInflater,
@@ -34,7 +38,7 @@ class CourseFragment : BaseFragment<FragmentCourseBinding>() {
         setupViewPager()
         setupTabLayout(binding.tabLayoutCourse, binding.viewPagerCourse)
         courseViewModel.getCourseById(args.course.id)
-        setupObservers()
+//        setupObservers()
     }
 
     private fun setupObservers() {
@@ -42,7 +46,6 @@ class CourseFragment : BaseFragment<FragmentCourseBinding>() {
             with(binding) {
                 tvCourseTitle.text = it.title
                 rbRating.rating = it.rating.toFloat()
-
             }
         }
 
@@ -63,7 +66,7 @@ class CourseFragment : BaseFragment<FragmentCourseBinding>() {
     }
 
     private fun setupViewPager() {
-        val adapter = CourseInfoViewPagerAdapter(requireActivity())
+        val adapter = CourseInfoViewPagerAdapter(requireActivity(), args.course.id)
         binding.viewPagerCourse.adapter = adapter
     }
 }
