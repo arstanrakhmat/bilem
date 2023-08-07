@@ -32,5 +32,9 @@
         android:id="@+id/courseFragment"
         android:name="com.example.bilemonline.app.fragments.course.CourseFragment"
         android:label="fragment_course"
-        tools:layout="@layout/fragment_course" />
+        tools:layout="@layout/fragment_course" >
+        <argument
+            android:name="course"
+            app:argType="com.example.bilemonline.data.model.Data" />
+    </fragment>
 </navigation>

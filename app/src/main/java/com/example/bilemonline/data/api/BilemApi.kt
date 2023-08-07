@@ -2,6 +2,7 @@ package com.example.bilemonline.data.api
 
 import com.example.bilemonline.data.model.CategoryResponse
 import com.example.bilemonline.data.model.ChangePasswordResponse
+import com.example.bilemonline.data.model.CourseById
 import com.example.bilemonline.data.model.CourseResponse
 import com.example.bilemonline.data.model.LoginResponse
 import com.example.bilemonline.data.model.UserActivateRequest
@@ -51,6 +52,12 @@ interface BilemApi {
         @Field("confirmPassword")
         confirmPassword: String
     ): Response<ChangePasswordResponse>
+
+    @GET("course/{id}")
+    suspend fun getCourseById(
+        @Path("id")
+        id: String
+    ): Response<CourseById>
 
     @POST("auth/sign-up")
     suspend fun userSignUp(

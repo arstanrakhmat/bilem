@@ -2,6 +2,7 @@ package com.example.bilemonline.data.repository
 
 import com.example.bilemonline.data.api.BilemApi
 import com.example.bilemonline.data.model.ChangePasswordResponse
+import com.example.bilemonline.data.model.CourseById
 import com.example.bilemonline.data.model.LoginResponse
 import com.example.bilemonline.data.model.UserActivateRequest
 import com.example.bilemonline.data.model.UserActivateResponse
@@ -29,7 +30,6 @@ class AuthRepository(private val api: BilemApi) {
     ): Response<ChangePasswordResponse> {
         return api.userChangePassword(email, password, confirmPassword)
     }
-
 
     suspend fun userSignIn(email: String, password: String): Response<LoginResponse> {
         return api.userSignIn(email, password)

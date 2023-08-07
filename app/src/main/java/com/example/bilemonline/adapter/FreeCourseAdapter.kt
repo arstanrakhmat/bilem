@@ -42,11 +42,11 @@ class FreeCourseAdapter : RecyclerView.Adapter<FreeCourseAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val course = differ.currentList[position]
         holder.itemView.apply {
-            Glide.with(this).load(course.logo.url).centerCrop().into(
+            Glide.with(this).load(course.logo?.url).centerCrop().into(
                 binding.ivPhoto
             )
             binding.tvTitle.text = course.title
-            binding.tvAuthor.text = course.authors[0].username.toString()
+            binding.tvAuthor.text = course.authors?.get(0)?.username.toString()
             binding.tvRate.text = course.rating.toString()
 //            binding.tvLearned.text = course.people_bought.toString()
             setOnClickListener {

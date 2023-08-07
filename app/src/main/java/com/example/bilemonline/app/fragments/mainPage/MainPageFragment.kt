@@ -45,7 +45,10 @@ class MainPageFragment : BaseFragment<FragmentMainPageBinding>() {
         categoryViewModel.getListOfCategories(1, 10, "ASC", "id")
 
         courseAdapter.setOnClickListener {
-            findNavController().navigate(R.id.action_mainPageFragment_to_courseFragment)
+            val bundle = Bundle().apply {
+                putSerializable("course", it)
+            }
+            findNavController().navigate(R.id.action_mainPageFragment_to_courseFragment, bundle)
         }
 
         freeCourseAdapter.setOnClickListener {
