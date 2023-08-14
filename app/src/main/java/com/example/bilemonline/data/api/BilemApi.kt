@@ -14,6 +14,7 @@ import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -55,6 +56,7 @@ interface BilemApi {
 
     @GET("course/{id}")
     suspend fun getCourseById(
+        @Header("Authorization") token: String?,
         @Path("id")
         id: String
     ): Response<CourseById>
@@ -86,6 +88,8 @@ interface BilemApi {
 
     @GET("course")
     suspend fun getListOfCourses(
+        @Header("Authorization") token: String?,
+
         @Query("page")
         pageNumber: Int = 1,
 

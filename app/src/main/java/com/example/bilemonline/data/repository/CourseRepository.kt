@@ -7,6 +7,7 @@ import retrofit2.Response
 
 class CourseRepository(private val api: BilemApi) {
     suspend fun getListOfCourses(
+        token: String?,
         page: Int,
         limit: Int,
         order: String,
@@ -15,6 +16,7 @@ class CourseRepository(private val api: BilemApi) {
 //        categoryId: String
     ): Response<CourseResponse> {
         return api.getListOfCourses(
+            token,
             page,
             limit,
             order,
@@ -22,7 +24,7 @@ class CourseRepository(private val api: BilemApi) {
         )
     }
 
-    suspend fun courseById(id: String) : Response<CourseById> {
-        return api.getCourseById(id)
+    suspend fun courseById(token: String?, id: String) : Response<CourseById> {
+        return api.getCourseById(token, id)
     }
 }

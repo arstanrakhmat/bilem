@@ -17,6 +17,7 @@ class CourseViewModel(private val courseRepository: CourseRepository) : ViewMode
     val error = MutableLiveData<String>()
 
     fun getListOfCoursesPaid(
+        token: String?,
         page: Int,
         limit: Int,
         order: String,
@@ -26,7 +27,7 @@ class CourseViewModel(private val courseRepository: CourseRepository) : ViewMode
     ) {
         viewModelScope.launch {
             val response = courseRepository.getListOfCourses(
-                page, limit, order, orderField, isFree
+                token, page, limit, order, orderField, isFree
             )
 
             if (response.isSuccessful) {
@@ -37,9 +38,9 @@ class CourseViewModel(private val courseRepository: CourseRepository) : ViewMode
         }
     }
 
-    fun getCourseById(id: String) {
+    fun getCourseById(token: String?,id: String) {
         viewModelScope.launch {
-            val response = courseRepository.courseById(id)
+            val response = courseRepository.courseById(token, id)
 
             if (response.isSuccessful) {
                 gotCourseByid.postValue(response.body())
@@ -50,6 +51,7 @@ class CourseViewModel(private val courseRepository: CourseRepository) : ViewMode
     }
 
     fun getListOfCoursesFree(
+        token: String?,
         page: Int,
         limit: Int,
         order: String,
@@ -59,7 +61,7 @@ class CourseViewModel(private val courseRepository: CourseRepository) : ViewMode
     ) {
         viewModelScope.launch {
             val response = courseRepository.getListOfCourses(
-                page, limit, order, orderField, isFree
+                token, page, limit, order, orderField, isFree
             )
 
             if (response.isSuccessful) {

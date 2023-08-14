@@ -8,8 +8,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.example.bilemonline.adapter.AuthorAdapter
 import com.example.bilemonline.app.fragments.BaseFragment
+import com.example.bilemonline.data.UserPreferences
 import com.example.bilemonline.databinding.FragmentCourseInfoBinding
 import com.example.bilemonline.viewmodels.CourseViewModel
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CourseInfoFragment : BaseFragment<FragmentCourseInfoBinding>() {
@@ -17,6 +19,7 @@ class CourseInfoFragment : BaseFragment<FragmentCourseInfoBinding>() {
     private lateinit var authorAdapter: AuthorAdapter
     private val courseViewModel by viewModel<CourseViewModel>()
     private var gotCourseId: String? = null
+    private val sharedPrefs by inject<UserPreferences>()
 
     override fun inflateView(
         inflater: LayoutInflater,
@@ -32,7 +35,7 @@ class CourseInfoFragment : BaseFragment<FragmentCourseInfoBinding>() {
         arguments?.let {
             gotCourseId = it.getString("course_id")
         }
-        courseViewModel.getCourseById(gotCourseId!!)
+        courseViewModel.getCourseById("Bearer ${sharedPrefs.fetchToken()}", gotCourseId!!)
     }
 
     private fun setupObservers() {

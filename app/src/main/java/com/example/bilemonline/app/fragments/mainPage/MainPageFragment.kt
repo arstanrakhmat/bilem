@@ -13,15 +13,18 @@ import com.example.bilemonline.adapter.CategoryAdapter
 import com.example.bilemonline.adapter.CourseAdapter
 import com.example.bilemonline.adapter.FreeCourseAdapter
 import com.example.bilemonline.app.fragments.BaseFragment
+import com.example.bilemonline.data.UserPreferences
 import com.example.bilemonline.databinding.FragmentMainPageBinding
 import com.example.bilemonline.viewmodels.CategoryViewModel
 import com.example.bilemonline.viewmodels.CourseViewModel
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainPageFragment : BaseFragment<FragmentMainPageBinding>() {
 
     private val courseViewModel by viewModel<CourseViewModel>()
     private val categoryViewModel by viewModel<CategoryViewModel>()
+    private val sharePreferences by inject<UserPreferences>()
 
     private lateinit var courseAdapter: CourseAdapter
     private lateinit var categoryAdapter: CategoryAdapter
@@ -40,8 +43,8 @@ class MainPageFragment : BaseFragment<FragmentMainPageBinding>() {
         setupRvCategories()
         initPaidCourses()
         initCategory()
-        courseViewModel.getListOfCoursesPaid(1, 10, "ASC", "id", false)
-        courseViewModel.getListOfCoursesFree(1, 10, "ASC", "id", true)
+        courseViewModel.getListOfCoursesPaid("Bearer ${sharePreferences.fetchToken()}",1, 10, "ASC", "id", false)
+        courseViewModel.getListOfCoursesFree("Bearer ${sharePreferences.fetchToken()}",1, 10, "ASC", "id", true)
         categoryViewModel.getListOfCategories(1, 10, "ASC", "id")
 
         courseAdapter.setOnClickListener {
@@ -52,7 +55,10 @@ class MainPageFragment : BaseFragment<FragmentMainPageBinding>() {
         }
 
         freeCourseAdapter.setOnClickListener {
-            findNavController().navigate(R.id.action_mainPageFragment_to_courseFragment)
+            val bundle = Bundle().apply {
+                putSerializable("course", it)
+            }
+            findNavController().navigate(R.id.action_mainPageFragment_to_courseFragment, bundle)
         }
     }
 

@@ -11,16 +11,19 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.bilemonline.R
 import com.example.bilemonline.adapter.CourseInfoViewPagerAdapter
 import com.example.bilemonline.app.fragments.BaseFragment
+import com.example.bilemonline.data.UserPreferences
 import com.example.bilemonline.databinding.FragmentCourseBinding
 import com.example.bilemonline.viewmodels.CourseViewModel
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CourseFragment : BaseFragment<FragmentCourseBinding>() {
 
     private val args: CourseFragmentArgs by navArgs()
     private val courseViewModel by viewModel<CourseViewModel>()
+    private val sharedPrefs by inject<UserPreferences>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setupObservers()
@@ -37,7 +40,7 @@ class CourseFragment : BaseFragment<FragmentCourseBinding>() {
         super.onViewCreated(view, savedInstanceState)
         setupViewPager()
         setupTabLayout(binding.tabLayoutCourse, binding.viewPagerCourse)
-        courseViewModel.getCourseById(args.course.id)
+        courseViewModel.getCourseById("Bearer ${sharedPrefs.fetchToken()}", args.course.id)
 //        setupObservers()
     }
 

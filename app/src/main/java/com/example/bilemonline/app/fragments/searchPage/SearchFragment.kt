@@ -11,12 +11,14 @@ import com.example.bilemonline.adapter.CourseAdapter
 import com.example.bilemonline.adapter.CoursesCategoryAdapter
 import com.example.bilemonline.adapter.FreeCourseAdapter
 import com.example.bilemonline.app.fragments.BaseFragment
+import com.example.bilemonline.data.UserPreferences
 import com.example.bilemonline.databinding.FragmentSearchBinding
 import com.example.bilemonline.viewmodels.CategoryViewModel
 import com.example.bilemonline.viewmodels.CourseViewModel
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchFragment : BaseFragment<FragmentSearchBinding>() {
@@ -26,6 +28,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
     private lateinit var coursesCategoryAdapter: CoursesCategoryAdapter
     private lateinit var courseAdapter: CourseAdapter
     private lateinit var freeCourseAdapter: FreeCourseAdapter
+    private val sharePreferences by inject<UserPreferences>()
 
     override fun inflateView(
         inflater: LayoutInflater,
@@ -40,8 +43,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
         initPaidCourses()
         initCategory()
         setupRVForFreeCourses()
-        courseViewModel.getListOfCoursesPaid(1, 10, "ASC", "id", false)
-        courseViewModel.getListOfCoursesFree(1, 10, "ASC", "id", true)
+        courseViewModel.getListOfCoursesPaid("Bearer ${sharePreferences.fetchToken()}",1, 10, "ASC", "id", false)
+        courseViewModel.getListOfCoursesFree("Bearer ${sharePreferences.fetchToken()}",1, 10, "ASC", "id", true)
         categoryViewModel.getListOfCategories(1, 20, "ASC", "id")
     }
 

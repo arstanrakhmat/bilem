@@ -13,6 +13,7 @@ data class CourseById(
     val rating: Int,
     val status: String,
     val title: String,
+    val students: String,
     val updatedAt: String,
     val wallpaper: Wallpaper
 ) : java.io.Serializable
