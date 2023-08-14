@@ -75,8 +75,10 @@
     <string name="wish_list_courses">Хочу пройти</string>
     <string name="favorite_courses">Любимые</string>
     <string name="completed_courses">Пройденные</string>
-    <string name="hello_user">Привет, Арстан!</string>
+    <string name="hello_user">Арстан</string>
     <string name="modify_account">Редактировать аккаунт</string>
+    <string name="compeleted_courses">Пройденные курсы</string>
+    <string name="created_courses">Созданные курсы</string>
     <string name="change_password">Изменить пароль</string>
     <string name="frequently_asked_questions">Часто задаваемые вопросы</string>
     <string name="change_language">Язык приложения</string>

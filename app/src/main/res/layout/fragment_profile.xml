@@ -105,6 +105,78 @@
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llCompeletedCourses"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="32dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_completed_courses" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/raleway"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="@string/compeleted_courses"
+                android:textColor="@color/primary_black"
+                android:textFontWeight="500"
+                android:textSize="16sp"
+                tools:targetApi="31" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_arrow_open" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llCreatedCourses"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="32dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_created_courses" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/raleway"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="@string/created_courses"
+                android:textColor="@color/primary_black"
+                android:textFontWeight="500"
+                android:textSize="16sp"
+                tools:targetApi="31" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_arrow_open" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/llChangePassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -127,42 +199,6 @@
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
                 android:text="@string/change_password"
-                android:textColor="@color/primary_black"
-                android:textFontWeight="500"
-                android:textSize="16sp"
-                tools:targetApi="31" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_arrow_open" />
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/llMostAskedQuestions"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="32dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_often_questions" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/raleway"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:text="@string/frequently_asked_questions"
                 android:textColor="@color/primary_black"
                 android:textFontWeight="500"
                 android:textSize="16sp"
@@ -212,41 +248,6 @@
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/llWallet"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="32dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_wallet" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/raleway"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:text="@string/my_wallter"
-                android:textColor="@color/primary_black"
-                android:textFontWeight="500"
-                android:textSize="16sp"
-                tools:targetApi="31" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_arrow_open" />
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
     </LinearLayout>
 
     <Button

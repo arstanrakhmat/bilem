@@ -77,8 +77,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
     private fun setupRvForCoursesCategory() {
 
         val layoutManager = FlexboxLayoutManager(requireContext())
-        layoutManager.flexDirection = FlexDirection.ROW
-        layoutManager.justifyContent = JustifyContent.SPACE_EVENLY
+//        layoutManager.flexDirection = FlexDirection.ROW
+//        layoutManager.justifyContent = JustifyContent.SPACE_BETWEEN
         binding.rvCoursesCategory.layoutManager = layoutManager
 
         coursesCategoryAdapter = CoursesCategoryAdapter()
