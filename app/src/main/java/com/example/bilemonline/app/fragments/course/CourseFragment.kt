@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.widget.ViewPager2
 import com.example.bilemonline.R
@@ -42,6 +43,15 @@ class CourseFragment : BaseFragment<FragmentCourseBinding>() {
         setupTabLayout(binding.tabLayoutCourse, binding.viewPagerCourse)
         courseViewModel.getCourseById("Bearer ${sharedPrefs.fetchToken()}", args.course.id)
 //        setupObservers()
+
+        binding.btnStartLearning.setOnClickListener {
+            val action =
+                CourseFragmentDirections.actionCourseFragmentToCourseModuleFragment(
+                    args.course.id,
+                    args.course.title
+                )
+            findNavController().navigate(action)
+        }
     }
 
     private fun setupObservers() {

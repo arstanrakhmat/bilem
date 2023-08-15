@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.bilemonline.data.model.Course
 import com.example.bilemonline.data.model.CourseById
 import com.example.bilemonline.data.model.CourseResponse
+import com.example.bilemonline.data.model.GetModuleResponse
 import com.example.bilemonline.data.repository.CourseRepository
 import kotlinx.coroutines.launch
 import retrofit2.Response
@@ -14,6 +15,7 @@ class CourseViewModel(private val courseRepository: CourseRepository) : ViewMode
     val coursesPaid = MutableLiveData<CourseResponse>()
     val coursesFree = MutableLiveData<CourseResponse>()
     val gotCourseByid = MutableLiveData<CourseById>()
+    val gotModuleById = MutableLiveData<GetModuleResponse>()
     val error = MutableLiveData<String>()
 
     fun getListOfCoursesPaid(
@@ -38,7 +40,7 @@ class CourseViewModel(private val courseRepository: CourseRepository) : ViewMode
         }
     }
 
-    fun getCourseById(token: String?,id: String) {
+    fun getCourseById(token: String?, id: String) {
         viewModelScope.launch {
             val response = courseRepository.courseById(token, id)
 
@@ -66,6 +68,21 @@ class CourseViewModel(private val courseRepository: CourseRepository) : ViewMode
 
             if (response.isSuccessful) {
                 coursesFree.postValue(response.body())
+            } else {
+                error.postValue(response.errorBody().toString())
+            }
+        }
+    }
+
+    fun getModuleById(
+        token: String?,
+        id: String
+    ) {
+        viewModelScope.launch {
+            val response = courseRepository.getModuleByCourseId(token, id)
+
+            if (response.isSuccessful) {
+                gotModuleById.postValue(response.body())
             } else {
                 error.postValue(response.errorBody().toString())
             }

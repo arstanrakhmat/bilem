@@ -36,5 +36,20 @@
         <argument
             android:name="course"
             app:argType="com.example.bilemonline.data.model.Data" />
+        <action
+            android:id="@+id/action_courseFragment_to_courseModuleFragment"
+            app:destination="@id/courseModuleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/courseModuleFragment"
+        android:name="com.example.bilemonline.app.fragments.module.CourseModuleFragment"
+        android:label="fragment_course_module"
+        tools:layout="@layout/fragment_course_module" >
+        <argument
+            android:name="courseId"
+            app:argType="string" />
+        <argument
+            android:name="title"
+            app:argType="string" />
     </fragment>
 </navigation>

@@ -3,7 +3,9 @@ package com.example.bilemonline.data.repository
 import com.example.bilemonline.data.api.BilemApi
 import com.example.bilemonline.data.model.CourseById
 import com.example.bilemonline.data.model.CourseResponse
+import com.example.bilemonline.data.model.GetModuleResponse
 import retrofit2.Response
+import retrofit2.http.GET
 
 class CourseRepository(private val api: BilemApi) {
     suspend fun getListOfCourses(
@@ -24,7 +26,10 @@ class CourseRepository(private val api: BilemApi) {
         )
     }
 
-    suspend fun courseById(token: String?, id: String) : Response<CourseById> {
+    suspend fun courseById(token: String?, id: String): Response<CourseById> {
         return api.getCourseById(token, id)
+    }
+    suspend fun getModuleByCourseId(token: String?, id: String): Response<GetModuleResponse> {
+        return api.getModuleByCourseId(token, id)
     }
 }

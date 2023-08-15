@@ -4,6 +4,7 @@ import com.example.bilemonline.data.model.CategoryResponse
 import com.example.bilemonline.data.model.ChangePasswordResponse
 import com.example.bilemonline.data.model.CourseById
 import com.example.bilemonline.data.model.CourseResponse
+import com.example.bilemonline.data.model.GetModuleResponse
 import com.example.bilemonline.data.model.LoginResponse
 import com.example.bilemonline.data.model.UserActivateRequest
 import com.example.bilemonline.data.model.UserActivateResponse
@@ -108,4 +109,10 @@ interface BilemApi {
 //        @Query("categoryId")
 //        categoryId: String = "UUID"
     ): Response<CourseResponse>
+
+    @GET("module/{courseId}")
+    suspend fun getModuleByCourseId(
+        @Header("Authorization") token: String?,
+        @Path("courseId") courseId: String
+    ): Response<GetModuleResponse>
 }
