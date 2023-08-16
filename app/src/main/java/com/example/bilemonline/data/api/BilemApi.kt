@@ -122,4 +122,9 @@ interface BilemApi {
         @Header("Authorization") token: String?,
         @Path("moduleId") modelId: String
     ): Response<GetSectionResponse>
+
+    suspend fun getContentBySectionId(
+        @Header("Authorization") token: String?,
+        @Path("sectionId") sectionlId: String
+    )
 }

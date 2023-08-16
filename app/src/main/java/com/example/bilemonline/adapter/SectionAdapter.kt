@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.bilemonline.data.model.GetSectionResponse
 import com.example.bilemonline.data.model.Section
 import com.example.bilemonline.databinding.ItemSectionBinding
 
@@ -41,11 +40,22 @@ class SectionAdapter : RecyclerView.Adapter<SectionAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val section = differ.currentList[position]
+        holder.itemView.apply {
+            binding.tvSectionName.text = section.theme
+            onItemClickListener?.let { it(section.id) }
+        }
 
-        binding.tvSectionName.text = section.theme
+
     }
 
     override fun getItemCount(): Int {
         return differ.currentList.size
     }
+
+    private var onItemClickListener: ((String) -> Unit)? = null
+
+    fun setOnClickListener(listener: (String) -> Unit) {
+        onItemClickListener = listener
+    }
+
 }

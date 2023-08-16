@@ -30,11 +30,16 @@ class CourseRepository(private val api: BilemApi) {
     suspend fun courseById(token: String?, id: String): Response<CourseById> {
         return api.getCourseById(token, id)
     }
+
     suspend fun getModuleByCourseId(token: String?, id: String): Response<GetModuleResponse> {
         return api.getModuleByCourseId(token, id)
     }
 
     suspend fun getSectionByModuleId(token: String?, id: String): Response<GetSectionResponse> {
         return api.getSectionsByModelId(token, id)
+    }
+
+    suspend fun getContentBySectionId(token: String?, id: String) {
+        TODO()
     }
 }
