@@ -7,9 +7,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:paddingHorizontal="16dp"
     android:paddingVertical="8dp"
-    android:background="@color/light_red">
+    android:background="@color/middle_light_gray">
 
     <TextView
+        android:id="@+id/tvSectionName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"

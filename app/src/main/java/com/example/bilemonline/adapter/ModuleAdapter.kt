@@ -45,7 +45,19 @@ class ModuleAdapter : RecyclerView.Adapter<ModuleAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val course = differ.currentList[position]
+        holder.itemView.apply {
 
-        binding.tvModuleName.text = "${course.order}. ${course.theme}"
+            binding.tvModuleName.text = "${course.order}. ${course.theme}"
+            setOnClickListener {
+                onItemClickListener?.let { it(course) }
+            }
+        }
     }
+
+    private var onItemClickListener: ((GetModuleResponseItem) -> Unit)? = null
+
+    fun setOnClickListener(listener: (GetModuleResponseItem) -> Unit) {
+        onItemClickListener = listener
+    }
+
 }

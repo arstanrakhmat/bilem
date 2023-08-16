@@ -7,6 +7,7 @@ import com.example.bilemonline.data.model.Course
 import com.example.bilemonline.data.model.CourseById
 import com.example.bilemonline.data.model.CourseResponse
 import com.example.bilemonline.data.model.GetModuleResponse
+import com.example.bilemonline.data.model.GetSectionResponse
 import com.example.bilemonline.data.repository.CourseRepository
 import kotlinx.coroutines.launch
 import retrofit2.Response
@@ -16,6 +17,7 @@ class CourseViewModel(private val courseRepository: CourseRepository) : ViewMode
     val coursesFree = MutableLiveData<CourseResponse>()
     val gotCourseByid = MutableLiveData<CourseById>()
     val gotModuleById = MutableLiveData<GetModuleResponse>()
+    val gotSectionByModuleId = MutableLiveData<GetSectionResponse>()
     val error = MutableLiveData<String>()
 
     fun getListOfCoursesPaid(
@@ -83,6 +85,21 @@ class CourseViewModel(private val courseRepository: CourseRepository) : ViewMode
 
             if (response.isSuccessful) {
                 gotModuleById.postValue(response.body())
+            } else {
+                error.postValue(response.errorBody().toString())
+            }
+        }
+    }
+
+    fun getSectionByModuleId(
+        token: String?,
+        id: String
+    ) {
+        viewModelScope.launch {
+            val response = courseRepository.getSectionByModuleId(token, id)
+
+            if (response.isSuccessful) {
+                gotSectionByModuleId.postValue(response.body())
             } else {
                 error.postValue(response.errorBody().toString())
             }

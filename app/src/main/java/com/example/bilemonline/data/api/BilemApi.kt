@@ -5,6 +5,7 @@ import com.example.bilemonline.data.model.ChangePasswordResponse
 import com.example.bilemonline.data.model.CourseById
 import com.example.bilemonline.data.model.CourseResponse
 import com.example.bilemonline.data.model.GetModuleResponse
+import com.example.bilemonline.data.model.GetSectionResponse
 import com.example.bilemonline.data.model.LoginResponse
 import com.example.bilemonline.data.model.UserActivateRequest
 import com.example.bilemonline.data.model.UserActivateResponse
@@ -115,4 +116,10 @@ interface BilemApi {
         @Header("Authorization") token: String?,
         @Path("courseId") courseId: String
     ): Response<GetModuleResponse>
+
+    @POST("module/{moduleId}")
+    suspend fun getSectionsByModelId(
+        @Header("Authorization") token: String?,
+        @Path("moduleId") modelId: String
+    ): Response<GetSectionResponse>
 }

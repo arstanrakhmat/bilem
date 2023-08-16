@@ -51,5 +51,17 @@
         <argument
             android:name="title"
             app:argType="string" />
+        <action
+            android:id="@+id/action_courseModuleFragment_to_courseSectionFragment"
+            app:destination="@id/courseSectionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/courseSectionFragment"
+        android:name="com.example.bilemonline.app.fragments.section.CourseSectionFragment"
+        android:label="fragment_course_section"
+        tools:layout="@layout/fragment_course_section" >
+        <argument
+            android:name="section"
+            app:argType="string" />
     </fragment>
 </navigation>

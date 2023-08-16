@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.bilemonline.R
 import com.example.bilemonline.adapter.ModuleAdapter
 import com.example.bilemonline.app.fragments.BaseFragment
 import com.example.bilemonline.data.UserPreferences
@@ -37,6 +38,18 @@ class CourseModuleFragment : BaseFragment<FragmentCourseModuleBinding>() {
         setupRv()
         setupObserver()
         courseViewModel.getModuleById("Bearer ${sharedPrefs.fetchToken()}", args.courseId)
+        moduleAdapter.setOnClickListener {
+            val bundle = Bundle().apply {
+                putString("section", it.id)
+            }
+
+            findNavController().navigate(
+                R.id.action_courseModuleFragment_to_courseSectionFragment,
+                bundle
+            )
+
+            Toast.makeText(requireContext(), "Clicked", Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun setupObserver() {
