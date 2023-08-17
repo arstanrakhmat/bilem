@@ -87,4 +87,7 @@ dependencies {
 
     //Google auth
     implementation 'com.google.android.gms:play-services-auth:20.6.0'
+
+    // dependency for exoplayer
+    implementation 'com.google.android.exoplayer:exoplayer:2.19.1'
 }

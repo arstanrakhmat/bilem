@@ -11,6 +11,7 @@
 
     <string name="on_boarding_text">Здесь будет находится описание для онбоардинга</string>
     <string name="welcome">Добро пожаловать!</string>
+    <string name="trial_content">Добро пожаловать!</string>
     <string name="next">Далее</string>
     <string name="next_lesson">Следующий урок</string>
     <string name="comments">Коментарии</string>
