@@ -50,7 +50,10 @@ class CourseSectionFragment : BaseFragment<FragmentCourseSectionBinding>() {
                 putSerializable("sectionCompletion", it)
             }
 
-            findNavController().navigate(R.id.action_courseSectionFragment_to_sectionCompletionFragment, bundle)
+            findNavController().navigate(
+                R.id.action_courseSectionFragment_to_sectionCompletionFragment,
+                bundle
+            )
         }
 
         binding.btnArrowBack.setOnClickListener {

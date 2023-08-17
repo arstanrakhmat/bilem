@@ -1,6 +1,7 @@
 package com.example.bilemonline.data.repository
 
 import com.example.bilemonline.data.api.BilemApi
+import com.example.bilemonline.data.model.Content
 import com.example.bilemonline.data.model.CourseById
 import com.example.bilemonline.data.model.CourseResponse
 import com.example.bilemonline.data.model.GetModuleResponse
@@ -39,7 +40,7 @@ class CourseRepository(private val api: BilemApi) {
         return api.getSectionsByModelId(token, id)
     }
 
-    suspend fun getContentBySectionId(token: String?, id: String) {
-        TODO()
+    suspend fun getContentBySectionId(token: String?, id: String): Response<Content> {
+        return api.getContentBySectionId(token, id)
     }
 }

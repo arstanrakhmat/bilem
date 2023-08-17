@@ -5,3 +5,9 @@ object Constants {
     const val TOKEN = ""
     const val REFRESH_TOKEN = ""
 }
+
+enum class ContentType {
+    TEXT,
+    QUIZ,
+    VIDEO
+}

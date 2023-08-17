@@ -2,6 +2,7 @@ package com.example.bilemonline.data.api
 
 import com.example.bilemonline.data.model.CategoryResponse
 import com.example.bilemonline.data.model.ChangePasswordResponse
+import com.example.bilemonline.data.model.Content
 import com.example.bilemonline.data.model.CourseById
 import com.example.bilemonline.data.model.CourseResponse
 import com.example.bilemonline.data.model.GetModuleResponse
@@ -123,8 +124,9 @@ interface BilemApi {
         @Path("moduleId") modelId: String
     ): Response<GetSectionResponse>
 
+    @GET("section/{sectionId}")
     suspend fun getContentBySectionId(
         @Header("Authorization") token: String?,
         @Path("sectionId") sectionlId: String
-    )
+    ): Response<Content>
 }

@@ -6,21 +6,24 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.bilemonline.app.fragments.section.sectionType.QuizFragment
 import com.example.bilemonline.app.fragments.section.sectionType.TextFragment
 import com.example.bilemonline.app.fragments.section.sectionType.VideoFragment
+import com.example.bilemonline.data.model.ContentX
+import com.example.bilemonline.utils.ContentType
 
-private const val NUM_OF_FRAGMENTS = 3
-
-class SectionCompletionViewPagerAdapter(fragmentActivity: FragmentActivity) :
+class SectionCompletionViewPagerAdapter(
+    fragmentActivity: FragmentActivity,
+    private val contentList: List<ContentX>
+) :
     FragmentStateAdapter(fragmentActivity) {
 
     override fun getItemCount(): Int {
-        return NUM_OF_FRAGMENTS
+        return contentList.size
     }
 
     override fun createFragment(position: Int): Fragment {
-        return when (position) {
-            0 -> TextFragment()
-            1 -> VideoFragment()
-            2 -> QuizFragment()
+        return when (contentList[position].type) {
+            ContentType.QUIZ.toString() -> QuizFragment(contentList[position])
+            ContentType.TEXT.toString() -> TextFragment(contentList[position])
+            ContentType.VIDEO.toString() -> VideoFragment(contentList[position])
             else -> Fragment()
         }
     }
