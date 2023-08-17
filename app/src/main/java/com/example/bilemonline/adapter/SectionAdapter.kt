@@ -42,9 +42,10 @@ class SectionAdapter : RecyclerView.Adapter<SectionAdapter.ViewHolder>() {
         val section = differ.currentList[position]
         holder.itemView.apply {
             binding.tvSectionName.text = section.theme
-            onItemClickListener?.let { it(section.id) }
+            setOnClickListener {
+                onItemClickListener?.let { it(section) }
+            }
         }
-
 
     }
 
@@ -52,9 +53,9 @@ class SectionAdapter : RecyclerView.Adapter<SectionAdapter.ViewHolder>() {
         return differ.currentList.size
     }
 
-    private var onItemClickListener: ((String) -> Unit)? = null
+    private var onItemClickListener: ((Section) -> Unit)? = null
 
-    fun setOnClickListener(listener: (String) -> Unit) {
+    fun setOnClickListener(listener: (Section) -> Unit) {
         onItemClickListener = listener
     }
 

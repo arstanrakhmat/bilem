@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.bilemonline.R
 import com.example.bilemonline.adapter.SectionAdapter
 import com.example.bilemonline.app.fragments.BaseFragment
 import com.example.bilemonline.data.UserPreferences
@@ -35,15 +36,33 @@ class CourseSectionFragment : BaseFragment<FragmentCourseSectionBinding>() {
         setupAdapter()
         setupObservers()
         courseViewModel.getSectionByModuleId("Bearer ${sharedPrefs.fetchToken()}", args.section)
-        Log.d("sectionId", args.section)
+
+        sectionAdapter.setOnClickListener {
+            val bundle = Bundle().apply {
+                putSerializable("sectionCompletion", it)
+            }
+
+            findNavController().navigate(R.id.sectionCompletionFragment, bundle)
+        }
+
+        sectionAdapter.setOnClickListener {
+            val bundle = Bundle().apply {
+                putSerializable("sectionCompletion", it)
+            }
+
+            findNavController().navigate(R.id.action_courseSectionFragment_to_sectionCompletionFragment, bundle)
+        }
+
         binding.btnArrowBack.setOnClickListener {
             findNavController().navigateUp()
         }
+
     }
 
     private fun setupObservers() {
         courseViewModel.gotSectionByModuleId.observe(requireActivity()) {
             sectionAdapter.differ.submitList(it.sections)
+
         }
 
         courseViewModel.error.observe(requireActivity()) {
@@ -55,7 +74,9 @@ class CourseSectionFragment : BaseFragment<FragmentCourseSectionBinding>() {
 
     private fun setupAdapter() {
         sectionAdapter = SectionAdapter()
-        binding.rvSection.apply { adapter = sectionAdapter }
+        binding.rvSection.apply {
+            adapter = sectionAdapter
+        }
 
     }
 
