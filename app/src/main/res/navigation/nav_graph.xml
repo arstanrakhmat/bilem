@@ -27,7 +27,11 @@
         android:id="@+id/profileFragment"
         android:name="com.example.bilemonline.app.fragments.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_userInfoFragment"
+            app:destination="@id/userInfoFragment" />
+    </fragment>
     <fragment
         android:id="@+id/courseFragment"
         android:name="com.example.bilemonline.app.fragments.course.CourseFragment"
@@ -76,4 +80,9 @@
             android:name="sectionCompletion"
             app:argType="com.example.bilemonline.data.model.Section" />
     </fragment>
+    <fragment
+        android:id="@+id/userInfoFragment"
+        android:name="com.example.bilemonline.app.fragments.profile.UserInfoFragment"
+        android:label="fragment_user_info"
+        tools:layout="@layout/fragment_user_info" />
 </navigation>

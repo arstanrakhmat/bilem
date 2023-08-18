@@ -26,6 +26,7 @@
     <color name="custom_green">#82C976</color>
     <color name="primary_black">#333333</color>
     <color name="black_blacker">#151215</color>
+    <color name="dark_white">#F5F5F7</color>
 
 
 </resources>

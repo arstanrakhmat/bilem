@@ -104,5 +104,16 @@
     <string name="_13">13</string>
     <string name="_46">46</string>
     <string name="_2">2</string>
+    <string name="account_edit">Редактировать аккаунт</string>
+    <string name="update_photo">Изменить фото</string>
+    <string name="personal_data">Личные данные</string>
+    <string name="age">Возраст</string>
+    <string name="lastname">Фамилия</string>
+    <string name="about_yourself">О себе</string>
+    <string name="fieldOfActivity">Сфера деятельности</string>
+    <string name="update_profile">Обновить профиль</string>
+    <string name="working_place">Место работы</string>
+    <string name="city">Город проживания</string>
+    <string name="username">Никнэйм</string>
 
 </resources>
