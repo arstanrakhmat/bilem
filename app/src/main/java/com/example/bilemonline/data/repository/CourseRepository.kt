@@ -56,4 +56,8 @@ class CourseRepository(private val api: BilemApi) {
     suspend fun getAllFavoriteCourses(token: String?) : Response<PassingCourses> {
         return api.getAllFavoriteCourses(token)
     }
+
+    suspend fun getCoursesByCategoryId(token: String?, categoryId: String): Response<PassingCourses> {
+        return api.getCoursesByCategoryId(token,categoryId)
+    }
 }

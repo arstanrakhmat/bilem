@@ -23,6 +23,7 @@ class CourseViewModel(private val courseRepository: CourseRepository) : ViewMode
     val gotPassingCourses = MutableLiveData<PassingCourses>()
     val isSavedToFavorites = MutableLiveData<PassingCoursesItem>()
     val gotAllFavoriteCourses = MutableLiveData<PassingCourses>()
+    val gotCoursesFromCategory = MutableLiveData<PassingCourses>()
     val error = MutableLiveData<String>()
 
     fun getListOfCoursesPaid(
@@ -153,6 +154,18 @@ class CourseViewModel(private val courseRepository: CourseRepository) : ViewMode
 
             if (response.isSuccessful) {
                 gotAllFavoriteCourses.postValue(response.body())
+            } else {
+                error.postValue(response.errorBody().toString())
+            }
+        }
+    }
+
+    fun getCoursesFromCategory(token: String?, categoryId: String) {
+        viewModelScope.launch {
+            val response = courseRepository.getCoursesByCategoryId(token, categoryId)
+
+            if (response.isSuccessful) {
+                gotCoursesFromCategory.postValue(response.body())
             } else {
                 error.postValue(response.errorBody().toString())
             }

@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_mainPageFragment_to_courseFragment"
             app:destination="@id/courseFragment" />
+        <action
+            android:id="@+id/action_mainPageFragment_to_coursesFromCategoryFragment"
+            app:destination="@id/coursesFromCategoryFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
@@ -85,4 +88,13 @@
         android:name="com.example.bilemonline.app.fragments.profile.UserInfoFragment"
         android:label="fragment_user_info"
         tools:layout="@layout/fragment_user_info" />
+    <fragment
+        android:id="@+id/coursesFromCategoryFragment"
+        android:name="com.example.bilemonline.app.fragments.course.fromCategory.CoursesFromCategoryFragment"
+        android:label="fragment_courses_from_category"
+        tools:layout="@layout/fragment_courses_from_category" >
+        <argument
+            android:name="category"
+            app:argType="com.example.bilemonline.data.model.DataCategory" />
+    </fragment>
 </navigation>

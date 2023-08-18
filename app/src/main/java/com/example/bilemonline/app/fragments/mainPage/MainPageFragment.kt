@@ -43,8 +43,22 @@ class MainPageFragment : BaseFragment<FragmentMainPageBinding>() {
         setupRvCategories()
         initPaidCourses()
         initCategory()
-        courseViewModel.getListOfCoursesPaid("Bearer ${sharePreferences.fetchToken()}",1, 10, "ASC", "id", false)
-        courseViewModel.getListOfCoursesFree("Bearer ${sharePreferences.fetchToken()}",1, 10, "ASC", "id", true)
+        courseViewModel.getListOfCoursesPaid(
+            "Bearer ${sharePreferences.fetchToken()}",
+            1,
+            10,
+            "ASC",
+            "id",
+            false
+        )
+        courseViewModel.getListOfCoursesFree(
+            "Bearer ${sharePreferences.fetchToken()}",
+            1,
+            10,
+            "ASC",
+            "id",
+            true
+        )
         categoryViewModel.getListOfCategories(1, 10, "ASC", "id")
 
         courseAdapter.setOnClickListener {
@@ -52,6 +66,17 @@ class MainPageFragment : BaseFragment<FragmentMainPageBinding>() {
                 putSerializable("course", it)
             }
             findNavController().navigate(R.id.action_mainPageFragment_to_courseFragment, bundle)
+        }
+
+        categoryAdapter.setOnClickListener {
+            val bundle = Bundle().apply {
+                putSerializable("category", it)
+            }
+
+            findNavController().navigate(
+                R.id.action_mainPageFragment_to_coursesFromCategoryFragment,
+                bundle
+            )
         }
 
         freeCourseAdapter.setOnClickListener {

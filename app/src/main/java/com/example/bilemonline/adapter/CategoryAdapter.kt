@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bilemonline.R
+import com.example.bilemonline.data.model.Data
 import com.example.bilemonline.data.model.DataCategory
 import com.example.bilemonline.databinding.ItemCategoryBinding
 import java.util.Random
@@ -54,6 +55,10 @@ class CategoryAdapter :
 //                )
 //            )
             binding.llCategory.setBackgroundColor(category.getRandomColor(holder.itemView.context))
+
+            setOnClickListener {
+                onItemClickListener?.let { it(category) }
+            }
         }
     }
 
@@ -70,6 +75,12 @@ class CategoryAdapter :
             R.color.custom_yellow
         )
         return ContextCompat.getColor(context, colors[Random().nextInt(colors.size)])
+    }
+
+    private var onItemClickListener: ((DataCategory) -> Unit)? = null
+
+    fun setOnClickListener(listener: (DataCategory) -> Unit) {
+        onItemClickListener = listener
     }
 
 }

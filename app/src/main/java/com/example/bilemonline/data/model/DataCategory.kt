@@ -1,6 +1,6 @@
 package com.example.bilemonline.data.model
 
-import com.example.bilemonline.R
+import java.io.Serializable
 
 data class DataCategory(
     val coursesQuantity: Int,
@@ -10,4 +10,4 @@ data class DataCategory(
     val id: String,
     val name: String,
     val updatedAt: String
-)
+): Serializable

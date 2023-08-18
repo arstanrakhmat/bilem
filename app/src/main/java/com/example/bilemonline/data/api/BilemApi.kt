@@ -176,5 +176,11 @@ interface BilemApi {
     suspend fun getAllFavoriteCourses(
         @Header("Authorization") token: String?
     ): Response<PassingCourses>
+
+    @GET("course/all/{categoryId}")
+    suspend fun getCoursesByCategoryId(
+        @Header("Authorization") token: String?,
+        @Path("categoryId") categoryId: String
+    ) : Response<PassingCourses>
 }
 
