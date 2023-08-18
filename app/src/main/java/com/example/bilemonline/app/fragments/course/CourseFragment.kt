@@ -5,7 +5,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.widget.ViewPager2
@@ -15,6 +17,7 @@ import com.example.bilemonline.app.fragments.BaseFragment
 import com.example.bilemonline.data.UserPreferences
 import com.example.bilemonline.databinding.FragmentCourseBinding
 import com.example.bilemonline.viewmodels.CourseViewModel
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import org.koin.android.ext.android.inject
@@ -52,6 +55,10 @@ class CourseFragment : BaseFragment<FragmentCourseBinding>() {
                 )
             findNavController().navigate(action)
         }
+
+        binding.btnAddFeedback.setOnClickListener {
+            feedbackBottomSheet()
+        }
     }
 
     private fun setupObservers() {
@@ -59,6 +66,7 @@ class CourseFragment : BaseFragment<FragmentCourseBinding>() {
             with(binding) {
                 tvCourseTitle.text = it.title
                 rbRating.rating = it.rating.toFloat()
+                tvHowManyStudied.text = it.students
             }
         }
 
@@ -81,5 +89,23 @@ class CourseFragment : BaseFragment<FragmentCourseBinding>() {
     private fun setupViewPager() {
         val adapter = CourseInfoViewPagerAdapter(requireActivity(), args.course.id)
         binding.viewPagerCourse.adapter = adapter
+    }
+
+    private fun feedbackBottomSheet() {
+        val bottomSheetDialog = BottomSheetDialog(
+            requireContext(),
+            R.style.BottomSheetStyle
+        )
+
+        val view = layoutInflater.inflate(R.layout.bottom_sheet_feedback, null)
+
+        view.findViewById<TextView>(R.id.btnSendFeedback).setOnClickListener {
+            ActivityCompat.recreate(requireActivity())
+            Toast.makeText(requireContext(), "Спасибо за отзыв", Toast.LENGTH_LONG).show()
+            bottomSheetDialog.dismiss()
+        }
+
+        bottomSheetDialog.setContentView(view)
+        bottomSheetDialog.show()
     }
 }

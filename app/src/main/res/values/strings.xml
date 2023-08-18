@@ -119,5 +119,7 @@
     <string name="change_current_lanuage">Выберите язык приложения</string>
     <string name="russian_language_change">Русский</string>
     <string name="kyrgyz_language_change">Кыргызкий</string>
+    <string name="write_feedback">Написать отзыв</string>
+    <string name="write_feedback_title">Как вам курс?</string>
 
 </resources>

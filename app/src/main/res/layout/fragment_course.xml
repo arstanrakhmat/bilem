@@ -102,6 +102,20 @@
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/btnAddFeedback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway_semibold"
+            android:textColor="@color/grey_logo"
+            android:textFontWeight="600"
+            android:layout_marginTop="4dp"
+            android:textSize="16sp"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/write_feedback"
+            tools:targetApi="31"
+            />
+
     </LinearLayout>
 
     <com.google.android.material.tabs.TabLayout

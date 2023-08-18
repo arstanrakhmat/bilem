@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bottom_sheet_shape"
+    android:backgroundTint="@color/white"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="0dp"
+    app:behavior_skipCollapsed="true"
+    app:layout_behavior="@string/bottom_sheet_behavior">
+
+    <ImageView
+        android:id="@+id/remove_sheet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/ic_bottom_sheet"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/raleway_bold"
+        android:paddingTop="3dp"
+        android:text="@string/write_feedback_title"
+        android:textColor="@color/grey_logo"
+        android:textFontWeight="700"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/remove_sheet"
+        tools:targetApi="28" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="40dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Описание"
+            tools:ignore="HardcodedText"
+            android:textColor="@color/grey_logo"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/etLastname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:autofillHints="@null"
+            android:background="@drawable/user_data_edit_profile"
+            android:fontFamily="@font/raleway_semibold"
+            android:inputType="text"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="10dp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            tools:ignore="LabelFor" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Оценка"
+            tools:ignore="HardcodedText"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/grey_logo"
+            android:textSize="12sp" />
+
+        <RatingBar
+            android:id="@+id/rbRating"
+            style="@style/CustomRatingBar"
+            android:layout_width="160dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:layout_marginTop="4dp"
+            android:rating="3"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:stepSize="1" />
+
+        <Button
+            android:id="@+id/btnSendFeedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="38dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/on_boarding_button_background"
+            android:fontFamily="@font/raleway_semibold"
+            android:text="Отправить"
+            tools:ignore="HardcodedText"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textFontWeight="600"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:targetApi="31" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

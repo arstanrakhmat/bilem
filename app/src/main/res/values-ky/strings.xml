@@ -121,4 +121,6 @@
     <string name="change_current_lanuage">Колдонмонун тилин тандаңыз</string>
     <string name="russian_language_change">Орусча</string>
     <string name="kyrgyz_language_change">Кыргызча</string>
+    <string name="write_feedback">Пикир жазуу</string>
+    <string name="write_feedback_title">Сизге курс кандай жакты?</string>
 </resources>

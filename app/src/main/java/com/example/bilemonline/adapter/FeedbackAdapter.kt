@@ -10,6 +10,7 @@ import com.example.bilemonline.databinding.ItemFeedbacksBinding
 class FeedbackAdapter : RecyclerView.Adapter<FeedbackAdapter.ViewHolder>() {
 
     private val feedbacks = listOf(
+        FeedbackTrial("Арс", 5.0F, "Ок"),
         FeedbackTrial("Назгуль апа", 5.0F, "Аябай сонун курс. Коп нерсени уйрондум"),
         FeedbackTrial("Сыймык Жып", 4.0F, "Весьма неплохое содержание"),
     )
