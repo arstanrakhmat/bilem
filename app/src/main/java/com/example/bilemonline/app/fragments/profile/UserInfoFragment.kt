@@ -27,7 +27,6 @@ class UserInfoFragment : BaseFragment<FragmentUserInfoBinding>() {
         return FragmentUserInfoBinding.inflate(inflater, container, false)
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupObserver()

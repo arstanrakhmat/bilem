@@ -116,5 +116,8 @@
     <string name="city">Город проживания</string>
     <string name="username">Никнэйм</string>
     <string name="education_place">Место учебы</string>
+    <string name="change_current_lanuage">Выберите язык приложения</string>
+    <string name="russian_language_change">Русский</string>
+    <string name="kyrgyz_language_change">Кыргызкий</string>
 
 </resources>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bottom_sheet_shape"
+    android:backgroundTint="@color/white"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="0dp"
+    app:behavior_skipCollapsed="true"
+    app:layout_behavior="@string/bottom_sheet_behavior">
+
+    <ImageView
+        android:id="@+id/remove_sheet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/ic_bottom_sheet"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/raleway_bold"
+        android:paddingTop="3dp"
+        android:text="@string/change_current_lanuage"
+        android:textColor="@color/grey_logo"
+        android:textFontWeight="700"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/remove_sheet"
+        tools:targetApi="28" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="40dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title">
+
+        <TextView
+            android:id="@+id/russian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway"
+            android:text="@string/russian_language_change"
+            android:textColor="@color/grey_logo"
+            android:textFontWeight="500"
+            android:textSize="16sp"
+            tools:targetApi="28" />
+
+        <TextView
+            android:id="@+id/kyrgyz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="70dp"
+            android:fontFamily="@font/raleway"
+            android:text="@string/kyrgyz_language_change"
+            android:textColor="@color/grey_logo"
+            android:textFontWeight="500"
+            android:textSize="16sp"
+            tools:targetApi="28" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
