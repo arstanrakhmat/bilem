@@ -6,9 +6,8 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.bilemonline.app.fragments.myLearnings.AllCoursesFragment
 import com.example.bilemonline.app.fragments.myLearnings.CompletedCoursesFragment
 import com.example.bilemonline.app.fragments.myLearnings.FavoriteCoursesFragment
-import com.example.bilemonline.app.fragments.myLearnings.WishListCoursesFragment
 
-private const val NUM_OF_FRAGMENTS = 4
+private const val NUM_OF_FRAGMENTS = 3
 
 class LearningsViewPagerAdapter(fragmentActivity: FragmentActivity) :
     FragmentStateAdapter(fragmentActivity) {
@@ -17,9 +16,8 @@ class LearningsViewPagerAdapter(fragmentActivity: FragmentActivity) :
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             0 -> AllCoursesFragment()
-            1 -> WishListCoursesFragment()
-            2 -> FavoriteCoursesFragment()
-            3 -> CompletedCoursesFragment()
+            1 -> FavoriteCoursesFragment()
+            2 -> CompletedCoursesFragment()
             else -> Fragment()
         }
     }

@@ -44,9 +44,12 @@ class CourseFragment : BaseFragment<FragmentCourseBinding>() {
         super.onViewCreated(view, savedInstanceState)
         setupViewPager()
         setupTabLayout(binding.tabLayoutCourse, binding.viewPagerCourse)
+        clickListeners()
         courseViewModel.getCourseById("Bearer ${sharedPrefs.fetchToken()}", args.course.id)
 //        setupObservers()
+    }
 
+    private fun clickListeners() {
         binding.btnStartLearning.setOnClickListener {
             val action =
                 CourseFragmentDirections.actionCourseFragmentToCourseModuleFragment(
@@ -59,6 +62,14 @@ class CourseFragment : BaseFragment<FragmentCourseBinding>() {
         binding.btnAddFeedback.setOnClickListener {
             feedbackBottomSheet()
         }
+
+        binding.btnAddToFavorites.setOnClickListener {
+            binding.progressBar.visibility = View.VISIBLE
+            courseViewModel.addCourseToFavorites(
+                "Bearer ${sharedPrefs.fetchToken()}",
+                args.course.id
+            )
+        }
     }
 
     private fun setupObservers() {
@@ -68,6 +79,15 @@ class CourseFragment : BaseFragment<FragmentCourseBinding>() {
                 rbRating.rating = it.rating.toFloat()
                 tvHowManyStudied.text = it.students
             }
+
+            binding.progressBar.visibility = View.GONE
+        }
+
+        courseViewModel.isSavedToFavorites.observe(requireActivity()) {
+            binding.progressBar.visibility = View.GONE
+            Toast.makeText(activity, "Успешно добавленное в изберанное", Toast.LENGTH_LONG)
+                .show()
+            binding.btnAddToFavorites.text = resources.getString(R.string.added_to_favorites)
         }
 
         courseViewModel.error.observe(requireActivity()) {

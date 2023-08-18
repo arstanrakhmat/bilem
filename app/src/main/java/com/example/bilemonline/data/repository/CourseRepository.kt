@@ -7,6 +7,7 @@ import com.example.bilemonline.data.model.CourseResponse
 import com.example.bilemonline.data.model.GetModuleResponse
 import com.example.bilemonline.data.model.GetSectionResponse
 import com.example.bilemonline.data.model.PassingCourses
+import com.example.bilemonline.data.model.PassingCoursesItem
 import retrofit2.Response
 
 class CourseRepository(private val api: BilemApi) {
@@ -46,5 +47,13 @@ class CourseRepository(private val api: BilemApi) {
 
     suspend fun getPassingCourses(token: String?) : Response<PassingCourses> {
         return api.getPassingCourses(token)
+    }
+
+    suspend fun addCourseToFavorites(token: String?, courseId: String): Response<PassingCoursesItem> {
+        return api.addCourseToFavorites(token, courseId)
+    }
+
+    suspend fun getAllFavoriteCourses(token: String?) : Response<PassingCourses> {
+        return api.getAllFavoriteCourses(token)
     }
 }

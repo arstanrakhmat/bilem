@@ -9,6 +9,7 @@ import com.example.bilemonline.data.model.GetModuleResponse
 import com.example.bilemonline.data.model.GetSectionResponse
 import com.example.bilemonline.data.model.LoginResponse
 import com.example.bilemonline.data.model.PassingCourses
+import com.example.bilemonline.data.model.PassingCoursesItem
 import com.example.bilemonline.data.model.UserActivateRequest
 import com.example.bilemonline.data.model.UserActivateResponse
 import com.example.bilemonline.data.model.UserInfo
@@ -162,6 +163,17 @@ interface BilemApi {
 
     @GET("course/passing")
     suspend fun getPassingCourses(
+        @Header("Authorization") token: String?
+    ): Response<PassingCourses>
+
+    @PUT("course/favorite/{courseId}")
+    suspend fun addCourseToFavorites(
+        @Header("Authorization") token: String?,
+        @Path("courseId") courseId: String
+    ): Response<PassingCoursesItem>
+
+    @GET("course/favorites")
+    suspend fun getAllFavoriteCourses(
         @Header("Authorization") token: String?
     ): Response<PassingCourses>
 }

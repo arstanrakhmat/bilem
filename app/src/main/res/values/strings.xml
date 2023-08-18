@@ -121,5 +121,7 @@
     <string name="kyrgyz_language_change">Кыргызкий</string>
     <string name="write_feedback">Написать отзыв</string>
     <string name="write_feedback_title">Как вам курс?</string>
+    <string name="save_to_favorites">Добавить в избранное</string>
+    <string name="added_to_favorites">Добавленно в избранное</string>
 
 </resources>

@@ -32,9 +32,8 @@ class MyLearningsFragment : BaseFragment<FragmentMyLearningsBinding>() {
         TabLayoutMediator(tabLayout, viewPager2) { tab, position ->
             when (position) {
                 0 -> tab.text = resources.getString(R.string.all_courses)
-                1 -> tab.text = resources.getString(R.string.wish_list_courses)
-                2 -> tab.text = resources.getString(R.string.favorite_courses)
-                3 -> tab.text = resources.getString(R.string.completed_courses)
+                1 -> tab.text = resources.getString(R.string.favorite_courses)
+                2 -> tab.text = resources.getString(R.string.completed_courses)
             }
         }.attach()
     }

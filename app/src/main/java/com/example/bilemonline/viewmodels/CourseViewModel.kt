@@ -9,6 +9,7 @@ import com.example.bilemonline.data.model.CourseResponse
 import com.example.bilemonline.data.model.GetModuleResponse
 import com.example.bilemonline.data.model.GetSectionResponse
 import com.example.bilemonline.data.model.PassingCourses
+import com.example.bilemonline.data.model.PassingCoursesItem
 import com.example.bilemonline.data.repository.CourseRepository
 import kotlinx.coroutines.launch
 
@@ -20,6 +21,8 @@ class CourseViewModel(private val courseRepository: CourseRepository) : ViewMode
     val gotSectionByModuleId = MutableLiveData<GetSectionResponse>()
     val gotContentBySectionId = MutableLiveData<Content>()
     val gotPassingCourses = MutableLiveData<PassingCourses>()
+    val isSavedToFavorites = MutableLiveData<PassingCoursesItem>()
+    val gotAllFavoriteCourses = MutableLiveData<PassingCourses>()
     val error = MutableLiveData<String>()
 
     fun getListOfCoursesPaid(
@@ -126,6 +129,30 @@ class CourseViewModel(private val courseRepository: CourseRepository) : ViewMode
 
             if (response.isSuccessful) {
                 gotPassingCourses.postValue(response.body())
+            } else {
+                error.postValue(response.errorBody().toString())
+            }
+        }
+    }
+
+    fun addCourseToFavorites(token: String?, courseId: String) {
+        viewModelScope.launch {
+            val response = courseRepository.addCourseToFavorites(token, courseId)
+
+            if (response.isSuccessful) {
+                isSavedToFavorites.postValue(response.body())
+            } else {
+                error.postValue(response.errorBody().toString())
+            }
+        }
+    }
+
+    fun getAllFavoriteCourses(token: String?) {
+        viewModelScope.launch {
+            val response = courseRepository.getAllFavoriteCourses(token)
+
+            if (response.isSuccessful) {
+                gotAllFavoriteCourses.postValue(response.body())
             } else {
                 error.postValue(response.errorBody().toString())
             }

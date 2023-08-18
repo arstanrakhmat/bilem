@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".app.fragments.course.CourseFragment">
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
     <LinearLayout
         android:id="@+id/llHeader"
         android:layout_width="match_parent"
@@ -28,7 +38,7 @@
         <TextView
             android:id="@+id/tvCourseTitle"
             android:layout_width="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="12dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:fontFamily="@font/raleway_semibold"
@@ -44,12 +54,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/start_course_button_background"
             android:fontFamily="@font/raleway_semibold"
             android:text="@string/start_learning"
             android:textAllCaps="false"
-            android:textColor="@color/grey_logo"
+            android:textColor="@color/white"
+            android:textFontWeight="600"
+            android:textSize="16sp"
+            tools:targetApi="31" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnAddToFavorites"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/button_save_to_favorite_background"
+            android:fontFamily="@font/raleway_semibold"
+            android:text="@string/save_to_favorites"
+            android:textAllCaps="false"
+            android:textColor="@color/primary_red"
             android:textFontWeight="600"
             android:textSize="16sp"
             tools:targetApi="31" />
