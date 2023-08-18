@@ -20,6 +20,7 @@ import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Path
 import retrofit2.http.Query
 
@@ -135,4 +136,27 @@ interface BilemApi {
     suspend fun getProfileInfo(
         @Header("Authorization") token: String?
     ): Response<UserInfo>
+
+    @FormUrlEncoded
+    @PUT("users/profile/{userId}")
+    suspend fun updateUserData(
+        @Path("userId") userId: String,
+        @Field("firstName") firstName: String,
+        @Field("lastName") lastName: String,
+        @Field("age") age: Int,
+        @Field("about") about: String,
+        @Field("fieldOfActivity") fieldOfActivity: String,
+        @Field("education") education: String,
+        @Field("city") city: String,
+    ): Response<Unit>
+
+    @FormUrlEncoded
+    @PUT("users/profile/{userId}")
+    suspend fun updateUserData2(
+        @Path("userId") userId: String,
+        @Field("firstName") firstName: String,
+        @Field("lastName") lastName: String,
+        @Field("about") about: String
+    ): Response<Unit>
 }
+

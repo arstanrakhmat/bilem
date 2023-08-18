@@ -305,7 +305,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/llWorkingPlace"
+            android:id="@+id/llEducation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
@@ -314,6 +314,40 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/llFieldOfActivity">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/education_place"
+                android:textColor="@color/grey_logo"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/etEducation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:autofillHints="@null"
+                android:background="@drawable/user_data_edit_profile"
+                android:fontFamily="@font/raleway_semibold"
+                android:inputType="text"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="10dp"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                tools:ignore="LabelFor" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llWorkingPlace"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/llEducation">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -373,7 +407,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/btnSignOut"
+            android:id="@+id/btnUpdateUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

@@ -115,5 +115,6 @@
     <string name="working_place">Место работы</string>
     <string name="city">Город проживания</string>
     <string name="username">Никнэйм</string>
+    <string name="education_place">Место учебы</string>
 
 </resources>
