@@ -8,6 +8,7 @@ import com.example.bilemonline.data.model.CourseResponse
 import com.example.bilemonline.data.model.GetModuleResponse
 import com.example.bilemonline.data.model.GetSectionResponse
 import com.example.bilemonline.data.model.LoginResponse
+import com.example.bilemonline.data.model.PassingCourses
 import com.example.bilemonline.data.model.UserActivateRequest
 import com.example.bilemonline.data.model.UserActivateResponse
 import com.example.bilemonline.data.model.UserInfo
@@ -158,5 +159,10 @@ interface BilemApi {
         @Field("lastName") lastName: String,
         @Field("about") about: String
     ): Response<Unit>
+
+    @GET("course/passing")
+    suspend fun getPassingCourses(
+        @Header("Authorization") token: String?
+    ): Response<PassingCourses>
 }
 

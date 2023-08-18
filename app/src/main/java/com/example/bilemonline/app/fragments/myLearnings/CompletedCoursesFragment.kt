@@ -65,7 +65,7 @@ class CompletedCoursesFragment : BaseFragment<FragmentCompletedCoursesBinding>()
             )
         )
 
-        courseListAdapter = CourseListInLearningsAdapter(courses)
+        courseListAdapter = CourseListInLearningsAdapter()
         binding.recycler.adapter = courseListAdapter
     }
 

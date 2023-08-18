@@ -65,7 +65,7 @@ class FavoriteCoursesFragment : BaseFragment<FragmentFavoriteCoursesBinding>() {
             )
         )
 
-        courseListAdapter = CourseListInLearningsAdapter(courses)
+        courseListAdapter = CourseListInLearningsAdapter()
         binding.recycler.adapter = courseListAdapter
     }
 

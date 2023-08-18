@@ -6,8 +6,8 @@ import com.example.bilemonline.data.model.CourseById
 import com.example.bilemonline.data.model.CourseResponse
 import com.example.bilemonline.data.model.GetModuleResponse
 import com.example.bilemonline.data.model.GetSectionResponse
+import com.example.bilemonline.data.model.PassingCourses
 import retrofit2.Response
-import retrofit2.http.GET
 
 class CourseRepository(private val api: BilemApi) {
     suspend fun getListOfCourses(
@@ -42,5 +42,9 @@ class CourseRepository(private val api: BilemApi) {
 
     suspend fun getContentBySectionId(token: String?, id: String): Response<Content> {
         return api.getContentBySectionId(token, id)
+    }
+
+    suspend fun getPassingCourses(token: String?) : Response<PassingCourses> {
+        return api.getPassingCourses(token)
     }
 }

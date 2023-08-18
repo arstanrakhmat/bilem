@@ -12,6 +12,7 @@ import com.example.bilemonline.databinding.FragmentMyLearningsBinding
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
+
 class MyLearningsFragment : BaseFragment<FragmentMyLearningsBinding>() {
 
     override fun inflateView(
