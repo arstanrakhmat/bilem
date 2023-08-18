@@ -5,10 +5,12 @@ import com.example.bilemonline.data.api.BilemApi
 import com.example.bilemonline.data.repository.AuthRepository
 import com.example.bilemonline.data.repository.CategoryRepository
 import com.example.bilemonline.data.repository.CourseRepository
+import com.example.bilemonline.data.repository.UserRepository
 import com.example.bilemonline.utils.Constants
 import com.example.bilemonline.viewmodels.AuthViewModel
 import com.example.bilemonline.viewmodels.CategoryViewModel
 import com.example.bilemonline.viewmodels.CourseViewModel
+import com.example.bilemonline.viewmodels.UserViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidApplication
@@ -26,12 +28,14 @@ val retrofitModule = module {
     factory { AuthRepository(api = get()) }
     factory { CourseRepository(api = get()) }
     factory { CategoryRepository(api = get()) }
+    factory { UserRepository(api = get()) }
 }
 
 val viewModules = module {
     viewModel { AuthViewModel(authRepository = get()) }
     viewModel { CourseViewModel(courseRepository = get()) }
     viewModel { CategoryViewModel(categoryRepository = get()) }
+    viewModel { UserViewModel(userRepository = get()) }
 }
 
 fun getOkHttp(): OkHttpClient {

@@ -10,6 +10,7 @@ import com.example.bilemonline.data.model.GetSectionResponse
 import com.example.bilemonline.data.model.LoginResponse
 import com.example.bilemonline.data.model.UserActivateRequest
 import com.example.bilemonline.data.model.UserActivateResponse
+import com.example.bilemonline.data.model.UserInfo
 import com.example.bilemonline.data.model.UserSignUpRequest
 import com.example.bilemonline.data.model.UserSignUpResponse
 import retrofit2.Response
@@ -129,4 +130,9 @@ interface BilemApi {
         @Header("Authorization") token: String?,
         @Path("sectionId") sectionlId: String
     ): Response<Content>
+
+    @GET("users/me")
+    suspend fun getProfileInfo(
+        @Header("Authorization") token: String?
+    ): Response<UserInfo>
 }
