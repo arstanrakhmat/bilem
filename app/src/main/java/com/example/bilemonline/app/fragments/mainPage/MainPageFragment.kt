@@ -59,7 +59,7 @@ class MainPageFragment : BaseFragment<FragmentMainPageBinding>() {
             "id",
             true
         )
-        categoryViewModel.getListOfCategories(1, 10, "ASC", "id")
+        categoryViewModel.getListOfCategories(2, 20, "DESC", "id")
 
         courseAdapter.setOnClickListener {
             val bundle = Bundle().apply {

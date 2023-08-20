@@ -43,9 +43,23 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
         initPaidCourses()
         initCategory()
         setupRVForFreeCourses()
-        courseViewModel.getListOfCoursesPaid("Bearer ${sharePreferences.fetchToken()}",1, 10, "ASC", "id", false)
-        courseViewModel.getListOfCoursesFree("Bearer ${sharePreferences.fetchToken()}",1, 10, "ASC", "id", true)
-        categoryViewModel.getListOfCategories(1, 20, "ASC", "id")
+        courseViewModel.getListOfCoursesPaid(
+            "Bearer ${sharePreferences.fetchToken()}",
+            1,
+            10,
+            "ASC",
+            "id",
+            false
+        )
+        courseViewModel.getListOfCoursesFree(
+            "Bearer ${sharePreferences.fetchToken()}",
+            1,
+            10,
+            "ASC",
+            "id",
+            true
+        )
+        categoryViewModel.getListOfCategories(2, 20, "DESC", "id")
     }
 
     private fun initCategory() {

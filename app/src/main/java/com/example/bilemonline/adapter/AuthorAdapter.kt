@@ -8,7 +8,7 @@ import com.example.bilemonline.databinding.CourseAuthorsItemBinding
 
 class AuthorAdapter : RecyclerView.Adapter<AuthorAdapter.ViewHolder>() {
 
-    private val author = listOf("Arstan Rakhmatulaev", "Sam Smith")
+    private val author = listOf("NursultanBegaliev","Arstan Rakhmatulaev", "Sam Smith")
 
     private lateinit var binding: CourseAuthorsItemBinding
 

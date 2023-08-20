@@ -81,16 +81,16 @@ interface BilemApi {
     @GET("category/flat")
     suspend fun getListOfCategories(
         @Query("page")
-        pageNumber: Int = 1,
+        pageNumber: Int,
 
         @Query("limit")
-        limitNumber: Int = 10,
+        limitNumber: Int,
 
         @Query("order")
-        order: String = "ASC",
+        order: String,
 
         @Query("orderField")
-        orderField: String = "id"
+        orderField: String
     ): Response<CategoryResponse>
 
     @GET("course")

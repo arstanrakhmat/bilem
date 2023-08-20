@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.widget.ViewPager2
 import com.example.bilemonline.R
@@ -44,6 +45,9 @@ class SectionCompletionFragment : BaseFragment<FragmentSectionCompletionBinding>
             args.sectionCompletion.id
         )
         binding.tvCourseName.text = args.sectionCompletion.theme
+        binding.btnArrowBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
     private fun setupTabLayout(tabLayout: TabLayout, viewPager: ViewPager2) {

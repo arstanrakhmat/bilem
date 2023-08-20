@@ -45,11 +45,19 @@ class UserInfoFragment : BaseFragment<FragmentUserInfoBinding>() {
             binding.tvUserName.text = it.username
             binding.etName.setText(it.profile.firstName)
             binding.etLastname.setText(it.profile.lastName)
-            binding.etAge.setText(it.profile.age.toString())
-            binding.etAbout.setText(it.profile.about.toString())
-            binding.etAbout.setText(it.profile.fieldOfActivity.toString())
+            if (it.profile.age != null) {
+                binding.etAge.setText(it.profile.age.toString())
+            }
+            if (it.profile.about != null) {
+                binding.etAbout.setText(it.profile.about.toString())
+            }
+            if (it.profile.fieldOfActivity != null) {
+                binding.etAbout.setText(it.profile.fieldOfActivity.toString())
+            }
 //            binding.etWorkingPlace.setText(it.profile.workingPlace.toString())
-            binding.etCity.setText(it.profile.city.toString())
+            if (it.profile.city != null) {
+                binding.etCity.setText(it.profile.city.toString())
+            }
             binding.progressBar.visibility = View.GONE
         }
 

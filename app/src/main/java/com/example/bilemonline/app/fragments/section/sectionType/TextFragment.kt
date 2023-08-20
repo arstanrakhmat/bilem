@@ -18,7 +18,7 @@ class TextFragment(private val textContent: ContentX) : BaseFragment<FragmentTex
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.tvHeader.text = textContent.id
+        binding.tvHeader.text = textContent.header
         binding.tvContent.text = textContent.content
     }
 

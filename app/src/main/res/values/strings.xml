@@ -123,5 +123,8 @@
     <string name="write_feedback_title">Как вам курс?</string>
     <string name="save_to_favorites">Добавить в избранное</string>
     <string name="added_to_favorites">Добавленно в избранное</string>
+    <string name="onboarding1">Добро пожаловать, инноваторы</string>
+    <string name="onboarding2">Последовательность - ключ к успеху</string>
+    <string name="onboarding3">Открой мир знаний с нами!</string>
 
 </resources>

@@ -125,4 +125,7 @@
     <string name="write_feedback_title">Сизге курс кандай жакты?</string>
     <string name="save_to_favorites">Сүйүктүүлөргө кошуу</string>
     <string name="added_to_favorites">Сүйүктүүлөргө кошулду</string>
+    <string name="onboarding1">Кош кел, инноват</string>
+    <string name="onboarding2">Ырааттуулук ийгиликтин ачкычы болуп саналат</string>
+    <string name="onboarding3">Билим дүйнөсүн биз менен ачыңыз!</string>
 </resources>

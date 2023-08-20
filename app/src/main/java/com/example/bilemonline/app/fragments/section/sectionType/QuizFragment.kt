@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.RadioButton
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.example.bilemonline.R
 import com.example.bilemonline.app.fragments.BaseFragment
@@ -40,6 +41,22 @@ class QuizFragment(private val quizContent: ContentX) : BaseFragment<FragmentQui
                     val checkBox = CheckBox(requireContext())
                     checkBox.text = quizContent.questions[index]
                     binding.llCheckbox.addView(checkBox)
+                }
+            }
+        }
+
+        binding.btnCheckAns.setOnClickListener {
+            if (!quizContent.isMulti) {
+                for (i in 0 until binding.radioGroup.childCount) {
+                    val radioButton = binding.radioGroup.getChildAt(i) as RadioButton
+                    if (radioButton.text == quizContent.answers) {
+                        radioButton.setTextColor(
+                            ContextCompat.getColor(
+                                requireContext(),
+                                R.color.custom_green
+                            )
+                        )
+                    }
                 }
             }
         }

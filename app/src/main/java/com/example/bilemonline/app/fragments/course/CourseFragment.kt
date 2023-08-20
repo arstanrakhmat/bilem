@@ -77,7 +77,7 @@ class CourseFragment : BaseFragment<FragmentCourseBinding>() {
             with(binding) {
                 tvCourseTitle.text = it.title
                 rbRating.rating = it.rating.toFloat()
-                tvHowManyStudied.text = it.students
+                tvHowManyStudied.text = "Обучились: ${it.students}"
             }
 
             binding.progressBar.visibility = View.GONE

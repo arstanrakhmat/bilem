@@ -48,7 +48,7 @@ class CourseModuleFragment : BaseFragment<FragmentCourseModuleBinding>() {
                 bundle
             )
 
-            Toast.makeText(requireContext(), "Clicked", Toast.LENGTH_LONG).show()
+//            Toast.makeText(requireContext(), "Clicked", Toast.LENGTH_LONG).show()
         }
     }
 
